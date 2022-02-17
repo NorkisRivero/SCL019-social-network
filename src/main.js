@@ -1,5 +1,12 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from './lib/index.js';
+import { home } from './components/home.js';
+// import { register } from './components/register.js';
+//
+// register();
+home();
 
-myFunction();
+// const registers = document.getElementById('aregister');
+// if (registers) {
+//   registers.addEventListener('click', () => { register(); });
+// }
