@@ -41,19 +41,20 @@ createUserWithEmailAndPassword(auth, email, password)
     });
     alert('Usuario Registrado');
     emailCheck();
-  })
-  .catch((error) => {
+  });
+}
+
+.catch((error) => {
   const errorCode = error.code;
   console.log(errorCode);
   const errorMessage = error.message;
   console.log(errorMessage);
   alert('Correo ya registrado');
   // ..
-  });
+});
 
 
 const auth = getAuth();
- const signIn = (email, password) => {
 signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
@@ -63,5 +64,4 @@ signInWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-  })
-}
+  });
