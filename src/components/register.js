@@ -29,6 +29,12 @@ export const register = () => {
   inputAge.setAttribute('placeholder', 'Edad');
   inputNationality.setAttribute('placeholder', 'Nacionalidad');
   inputResident.setAttribute('placeholder', 'Reside en Chile');
+  // Boton para volver a home
+  const buttonHome = document.createElement('button');
+  buttonHome.innerText = 'Volver al inicio';
+  buttonHome.classList.add('buttonHome');
+  const a = document.createElement('a');
+  a.setAttribute('href', '#/home');
   //
   const divContenedor = document.createElement('div');
   //
