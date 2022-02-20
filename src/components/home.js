@@ -4,6 +4,8 @@
 export const home = () => {
   // aqui tu codigo del formulario
   // creacion de logo y reseña
+//  const generalContainer = document.getElementById('generalContainer');
+
   const divImg = document.createElement('div');
   divImg.classList.add('divImg');
   const imgLogo = document.createElement('img');
@@ -54,7 +56,8 @@ export const home = () => {
   aRegister.innerText = 'Registrarse';
   const containerForm = document.createElement('div');
   containerForm.classList.add('containerForm');
-  const generalContainer = document.getElementById('generalContainer');
+
+  const generalContainer = document.createElement('div');
   generalContainer.classList.add('generalContainer');
   containerForm.appendChild(inputEmail);
   containerForm.appendChild(inputPassword);
@@ -84,6 +87,5 @@ export const home = () => {
   //     loginWithGoogle();
   //     // window.location.hash = "#/wallpage";
   //   });
-
   return generalContainer;
 };

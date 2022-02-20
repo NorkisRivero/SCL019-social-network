@@ -1,9 +1,9 @@
 import { home } from '../components/home.js';
-import { register } from '../components/register';
+import { register } from '../components/register.js';
 // import { wallTemplate } from '../templates/wallpage.js';
 
 export const router = (hash) => {
-  const rootBox = document.getElementById('generalContainer');
+  const rootBox = document.getElementById('Container');
   rootBox.innerHTML = '';
   if (hash === '#/' || hash === '/' || hash === '#' || hash === '') {
     rootBox.appendChild(home());
