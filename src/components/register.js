@@ -1,5 +1,4 @@
 export const register = () => {
-  const generalContainer = document.getElementById('generalContainer');
   const inputName = document.createElement('input');
   const inputSurname = document.createElement('input');
   const inputUser = document.createElement('input');
@@ -48,7 +47,6 @@ export const register = () => {
   divContenedor.appendChild(inputNationality);
   divContenedor.appendChild(inputResident);
   //
-  generalContainer.appendChild(divContenedor);
   //
-  return generalContainer;
+  return divContenedor;
 };
