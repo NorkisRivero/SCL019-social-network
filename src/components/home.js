@@ -32,7 +32,10 @@ export const home = () => {
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
   inputEmail.setAttribute('type', 'email');
+  inputEmail.setAttribute('name', 'email');
   inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('name', 'password');
+
   inputEmail.setAttribute('placeholder', ' Email');
   inputPassword.setAttribute('placeholder', ' Contraseña');
   inputEmail.classList.add('inputEmail');
@@ -71,6 +74,12 @@ export const home = () => {
   generalContainer.appendChild(container);
   generalContainer.appendChild(footPart);
 
+  const login = document.createElement('form');
+  login.classList.add('login');
+  login.appendChild(inputEmail);
+  login.appendChild(inputPassword);
+  login.appendChild(button);
+  generalContainer.appendChild(login);
   // Evento para Ingresar
   // generalContainer
   //   .querySelector('.iniciarSesion')
