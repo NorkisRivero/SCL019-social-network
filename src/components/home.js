@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 // aqui exportaras las funciones que necesites
 export const home = () => {
   // aqui tu codigo del formulario
@@ -39,7 +40,9 @@ export const home = () => {
   button.classList.add('iniciarSesion');
   // creacion de link y seteo del atributo
   const a = document.createElement('a');
-  a.setAttribute('href', '');
+  a.setAttribute('href', '/register');
+  //Probando
+  a.setAttribute('onclick', 'route()');
   a.innerText = '¿Olvidaste tu contraseña?';
   // creacion de boton
   const buttonGoogle = document.createElement('button');
