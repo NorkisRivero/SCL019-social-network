@@ -12,9 +12,12 @@ import {
   signOut,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
   sendEmailVerification,
   updateProfile,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  getRedirectResult,
+  signInWithRedirect,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -34,191 +37,6 @@ const app = initializeApp(firebaseConfig);
 // // Initialize Firebase
 
 export const auth = getAuth(app);
-// const db = getFirestore(app);
-// const provider = new GoogleAuthProvider(app);
-// export const user = auth.currentUser;
-
-// Funcion para registrarte
-// export const signUp = (email, password, name) => {
-//   createUserWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       const user = userCredential.user;
-//       console.log(user);
-//       updateProfile(auth.currentUser, {
-//         displayName: name,
-//         userEmail: email,
-//       });
-//       alert('Usuario Registrado');
-//       window.location.hash = '#/login';
-//       emailCheck();
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       console.log(errorCode);
-//       const errorMessage = error.message;
-//       console.log(errorMessage);
-//       alert('Correo ya registrado');
-//       // ..
-//     });
-
-// Envía un mensaje de verificación a un usuario
-//   const emailCheck = () => {
-//     sendEmailVerification(auth.currentUser)
-//       .then(() => {
-//         // Email verification sent!
-//         console.log('Correo enviado');
-//         alert('Hemos enviado un correo de verificación para validar tu cuenta');
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-// };
-
-// // Iniciar sesión con correo registrado
-// export const singIn = (emailRegister, passwordRegister) => {
-//   signInWithEmailAndPassword(auth, emailRegister, passwordRegister)
-//     .then((userCredential) => {
-//       // Signed in
-//       const user = userCredential.user;
-//       console.log(user);
-//       // ...
-//       window.location.hash = '#/wallpage';
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       console.log(errorCode);
-//       alert('Correo o contraseña inválidos');
-//       const errorMessage = error.message;
-//       console.log(errorMessage);
-//     });
-// };
-
-// // Iniciar sesión con Google
-// export const loginWithGoogle = () => {
-//   signInWithPopup(auth, provider)
-//     .then((result) => {
-//       // This gives you a Google Access Token. You can use it to access Google APIs.
-//       const credential = GoogleAuthProvider.credentialFromResult(result);
-//       const token = credential.accessToken;
-//       console.log(token);
-//       // The signed-in user info.
-//       const user = result.user;
-//       console.log(user);
-//       console.log('Inicio de sesión con Google');
-//       window.location.hash = '#/wallpage';
-//     })
-//     .catch((error) => {
-//       // Handle Errors here.
-//       const errorCode = error.code;
-//       console.log(errorCode);
-//       const errorMessage = error.message;
-//       // The email of the user's account used.
-//       const email = error.email;
-//       console.log(email);
-//       // The AuthCredential type that was used.
-//       const credential = GoogleAuthProvider.credentialFromError(error);
-//       console.log(credential);
-//       // ...
-//       console.log(errorMessage);
-//     });
-// };
-
-// // Función observador que nos sirve para autenticar al usuario
-// export const onAuth = () => {
-//   onAuthStateChanged(auth, (user) => {
-//     if (user != null && user.emailVerified === true) {
-//       // User is signed in, see docs for a list of available properties
-//       // https://firebase.google.com/docs/reference/js/firebase.User
-//       const uid = user.uid;
-//       const emailUser = user.email;
-//       const emailVerified = user.emailVerified;
-//       window.location.hash = '#/wallpage';
-//       console.log('auth:sing in');
-//     } else {
-//       if (!window.location.hash.includes('register')) {
-//         window.location.hash = '#/login';
-//       }
-//       // User is signed out
-//       console.log('auth: sign out');
-//     }
-//   });
-// };
-
-// // Funciones de Firestore
-
-// // Agregar datos de post
-// export const addPost = async (inputTitle, inputReview) => {
-//   // Add a new document with a generated id.
-//   const docRef = await addDoc(collection(db, 'posts'), {
-//     userId: auth.currentUser.uid,
-//     name: auth.currentUser.displayName,
-//     email: auth.currentUser.email,
-//     title: inputTitle,
-//     description: inputReview,
-//     datepost: Date.now(),
-//     likes: [],
-//     likesCounter: 0,
-//   });
-//   console.log('Document written with ID: ', docRef.id);
-
-//   return docRef;
-// };
-
-// // Leer datos de post
-// export const readPost = () => {
-//   const q = query(collection(db, 'posts'), orderBy('datepost', 'desc'));
-//   onSnapshot(q, (querySnapshot) => {
-//     const boxPost = [];
-//     querySnapshot.forEach((doc) => {
-//       boxPost.push({
-//         id: doc.id,
-//         data: doc.data(),
-//         title: doc.data.title,
-//         description: doc.data.description,
-//       });
-//     });
-//     printPosts(boxPost);
-//     console.log('title', 'description', boxPost.join(', '));
-//     return boxPost;
-//   });
-// };
-
-// // Borrar datos
-// export const deletePost = async (id) => {
-//   await deleteDoc(doc(db, 'posts', id));
-//   console.log(await deleteDoc);
-// };
-
-// // Editar datos
-// export const editPost = async (id, inputTitle, inputReview) => {
-//   const refreshPost = doc(db, 'posts', id);
-//   await updateDoc(refreshPost, {
-//     title: inputTitle,
-//     description: inputReview,
-//   });
-// };
-
-// // Dar likes y contador de likes
-// export const likePost = async (id, userLike) => {
-//   const likeRef = doc(db, 'posts', id);
-//   const docSnap = await getDoc(likeRef);
-//   const postData = docSnap.data();
-//   const likesCount = postData.likesCounter;
-
-//   if (postData.likes.includes(userLike)) {
-//     await updateDoc(likeRef, {
-//       likes: arrayRemove(userLike),
-//       likesCounter: likesCount - 1,
-//     });
-//   } else {
-//     await updateDoc(likeRef, {
-//       likes: arrayUnion(userLike),
-//       likesCounter: likesCount + 1,
-//     });
-//   }
-// };
-// }
 
 export const eventsRegister = () => {
   const signupForm = document.querySelector('.signup');
@@ -230,6 +48,7 @@ export const eventsRegister = () => {
       .then((cred) => {
         console.log('User created: ', cred.user);
         signupForm.reset();
+        window.location.hash = '#/home';
       }).catch((err) => {
         console.log(err.message);
         alert(err.message);
@@ -242,6 +61,7 @@ export const logout = () => {
     signOut(auth)
       .then(() => {
         console.log('el usuario salió');
+        window.location.hash = '#/home';
       })
       .catch((err) => {
         console.log(err.message);
@@ -258,9 +78,47 @@ export const login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
         console.log('user logged in:', cred.user);
+        // window.location.hash = '#/muro';
       })
       .catch((err) => {
         console.log(err.message);
       });
   });
 };
+
+export const checkgoogle = () => {
+  getRedirectResult(auth)
+    .then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+
+      // The signed-in user info.
+      const user = result.user;
+      console.log(token, user);
+    }).catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(errorCode, errorMessage, email, credential);
+    // ...
+    });
+};
+
+// autentifizacion de cambios de estado
+
+// const auth = getAuth(); // si se lo quito tira error las constantes siguientes, sino, dice que ya lo declare.
+const provider = new GoogleAuthProvider();
+
+export const Iniciargoogle = () => {
+  signInWithRedirect(auth, provider);
+};
+onAuthStateChanged(auth, (user) => {
+  console.log('user status changed:', user);
+  checkgoogle(auth);
+  //window.location.hash = 'muro'
+});
