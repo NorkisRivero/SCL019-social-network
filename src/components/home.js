@@ -1,6 +1,8 @@
 // aqui exportaras las funciones que necesites
 // import { signUp, loginWithGoogle } from '../lib/index.js';
+
 import { Iniciargoogle } from '../lib/index.js';
+
 
 export const home = () => {
   // aqui tu codigo del formulario
