@@ -1,8 +1,11 @@
-/* eslint-disable spaced-comment */
 // aqui exportaras las funciones que necesites
+// import { signUp, loginWithGoogle } from '../lib/index.js';
+
 export const home = () => {
   // aqui tu codigo del formulario
   // creacion de logo y reseña
+//  const generalContainer = document.getElementById('generalContainer');
+
   const divImg = document.createElement('div');
   divImg.classList.add('divImg');
   const imgLogo = document.createElement('img');
@@ -29,7 +32,10 @@ export const home = () => {
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
   inputEmail.setAttribute('type', 'email');
+  inputEmail.setAttribute('name', 'email');
   inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('name', 'password');
+
   inputEmail.setAttribute('placeholder', ' Email');
   inputPassword.setAttribute('placeholder', ' Contraseña');
   inputEmail.classList.add('inputEmail');
@@ -40,9 +46,7 @@ export const home = () => {
   button.classList.add('iniciarSesion');
   // creacion de link y seteo del atributo
   const a = document.createElement('a');
-  a.setAttribute('href', '/register');
-  //Probando
-  a.setAttribute('onclick', 'route()');
+  a.setAttribute('href', '');
   a.innerText = '¿Olvidaste tu contraseña?';
   // creacion de boton
   const buttonGoogle = document.createElement('button');
@@ -51,11 +55,12 @@ export const home = () => {
   // creacion de link y seteo del atributo
   const aRegister = document.createElement('a');
   aRegister.classList.add('aregister');
-  aRegister.setAttribute('href', '');
+  aRegister.setAttribute('href', '#/register');
   aRegister.innerText = 'Registrarse';
   const containerForm = document.createElement('div');
   containerForm.classList.add('containerForm');
-  const generalContainer = document.getElementById('generalContainer');
+
+  const generalContainer = document.createElement('div');
   generalContainer.classList.add('generalContainer');
   containerForm.appendChild(inputEmail);
   containerForm.appendChild(inputPassword);
@@ -68,5 +73,28 @@ export const home = () => {
   generalContainer.appendChild(asideLogo);
   generalContainer.appendChild(container);
   generalContainer.appendChild(footPart);
+
+  const login = document.createElement('form');
+  login.classList.add('login');
+  login.appendChild(inputEmail);
+  login.appendChild(inputPassword);
+  login.appendChild(button);
+  generalContainer.appendChild(login);
+  // Evento para Ingresar
+  // generalContainer
+  //   .querySelector('.iniciarSesion')
+  //   .addEventListener('click', () => {
+  //     const emailRegister = document.querySelector('.inputEmail').value;
+  //     const passwordRegister = document.querySelector('.inputPassword').value;
+  //     signUp(emailRegister, passwordRegister);
+  //   });
+
+  // // Evento para ingresar con Google
+  // generalContainer
+  //   .querySelector('.googleButton')
+  //   .addEventListener('click', () => {
+  //     loginWithGoogle();
+  //     // window.location.hash = "#/wallpage";
+  //   });
   return generalContainer;
 };
