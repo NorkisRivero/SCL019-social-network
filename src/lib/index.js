@@ -12,18 +12,12 @@ import {
   signOut,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-
   sendEmailVerification,
   updateProfile,
   onAuthStateChanged,
   GoogleAuthProvider,
   getRedirectResult,
   signInWithRedirect,
-
-  GoogleAuthProvider,
-  sendEmailVerification,
-  updateProfile,
-
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,7 +38,6 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-
 export const eventsRegister = () => {
   const signupForm = document.querySelector('.signup');
   signupForm.addEventListener('submit', (e) => {
@@ -57,28 +50,37 @@ export const eventsRegister = () => {
         signupForm.reset();
 
         window.location.hash = '#/home';
-
-
       }).catch((err) => {
         console.log(err.message);
         alert(err.message);
       });
   });
 };
+// export const logout = () => {
+//   const logoutButton = document.querySelector('.logout');
+//   logoutButton.addEventListener('click', () => {
+//     signOut(auth)
+//       .then(() => {
+//         console.log('el usuario salió');
+
+//         window.location.hash = '';
+//       })
+//       .catch((err) => {
+//         console.log(err.message);
+//       });
+//   });
+// };
+
 export const logout = () => {
-  const logoutButton = document.querySelector('.logout');
-  logoutButton.addEventListener('click', () => {
-    signOut(auth)
-      .then(() => {
-        console.log('el usuario salió');
+  signOut(auth)
+    .then(() => {
+      console.log('el usuario salió');
 
-        window.location.hash = '#/home';
-
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  });
+      window.location.hash = '';
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 
 export const login = () => {
@@ -91,16 +93,13 @@ export const login = () => {
       .then((cred) => {
         console.log('user logged in:', cred.user);
 
-        // window.location.hash = '#/muro';
-
+        window.location.hash = '#/wall';
       })
       .catch((err) => {
         console.log(err.message);
       });
   });
 };
-
-
 export const checkgoogle = () => {
   getRedirectResult(auth)
     .then((result) => {
@@ -125,16 +124,14 @@ export const checkgoogle = () => {
 };
 
 // autentifizacion de cambios de estado
-
-// const auth = getAuth(); // si se lo quito tira error las constantes siguientes, sino, dice que ya lo declare.
 const provider = new GoogleAuthProvider();
 
 export const Iniciargoogle = () => {
   signInWithRedirect(auth, provider);
+  window.location.hash = '#/wall';
 };
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
   checkgoogle(auth);
-  //window.location.hash = 'muro'
+  // window.location.hash = '#/wall';
 });
-
