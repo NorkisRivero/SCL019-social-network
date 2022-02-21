@@ -1,5 +1,6 @@
 // aqui exportaras las funciones que necesites
 // import { signUp, loginWithGoogle } from '../lib/index.js';
+import { Iniciargoogle } from '../lib/index.js';
 
 export const home = () => {
   // aqui tu codigo del formulario
@@ -52,6 +53,10 @@ export const home = () => {
   const buttonGoogle = document.createElement('button');
   buttonGoogle.innerText = 'Continuar con Google';
   buttonGoogle.classList.add('googleButton');
+  buttonGoogle.addEventListener('click', () => {
+    // console.log('cualquier cosa');
+    Iniciargoogle();
+  });
   // creacion de link y seteo del atributo
   const aRegister = document.createElement('a');
   aRegister.classList.add('aregister');
