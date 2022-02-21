@@ -3,7 +3,10 @@
     margin: 0;
     padding: 0;
  }
- 
+ .Container{
+    width: 100vh;
+    height: 100vh;
+ }
  a{
     color: azure;
  }
@@ -160,3 +163,12 @@
  }
  }
  
+ .signup{
+   background: url("./img/avesmigratorias.jpg") no-repeat;
+   background-position: center;
+   background-attachment: fixed;
+   background-size: cover;
+   display: grid;
+   width: 100vh;
+   height: 100vh;
+ }
