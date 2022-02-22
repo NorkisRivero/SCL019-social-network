@@ -3,7 +3,6 @@
 
 import { Iniciargoogle } from '../lib/index.js';
 
-
 export const home = () => {
   // aqui tu codigo del formulario
   // creacion de logo y reseña
@@ -49,8 +48,11 @@ export const home = () => {
   button.classList.add('iniciarSesion');
   // creacion de link y seteo del atributo
   const a = document.createElement('a');
-  a.setAttribute('href', '');
   a.innerText = '¿Olvidaste tu contraseña?';
+  // a.classList.add('recoverPassword');
+  // a.addEventListener('click', () => {
+  //   a.setAttribute('href', '#/restorePassword');
+  // });
   // creacion de boton
   const buttonGoogle = document.createElement('button');
   buttonGoogle.innerText = 'Continuar con Google';
@@ -72,7 +74,7 @@ export const home = () => {
   containerForm.appendChild(inputEmail);
   containerForm.appendChild(inputPassword);
   containerForm.appendChild(button);
-  containerForm.appendChild(a);
+  // containerForm.appendChild(a);
   containerForm.appendChild(aRegister);
   containerForm.appendChild(buttonGoogle);
   container.appendChild(containerForm);
@@ -87,21 +89,5 @@ export const home = () => {
   login.appendChild(inputPassword);
   login.appendChild(button);
   generalContainer.appendChild(login);
-  // Evento para Ingresar
-  // generalContainer
-  //   .querySelector('.iniciarSesion')
-  //   .addEventListener('click', () => {
-  //     const emailRegister = document.querySelector('.inputEmail').value;
-  //     const passwordRegister = document.querySelector('.inputPassword').value;
-  //     signUp(emailRegister, passwordRegister);
-  //   });
-
-  // // Evento para ingresar con Google
-  // generalContainer
-  //   .querySelector('.googleButton')
-  //   .addEventListener('click', () => {
-  //     loginWithGoogle();
-  //     // window.location.hash = "#/wallpage";
-  //   });
   return generalContainer;
 };
