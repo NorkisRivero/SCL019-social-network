@@ -29,7 +29,7 @@ export const home = () => {
   const footPart = document.createElement('footer');
   footPart.classList.add('footer');
   footPart.innerText = 'Todos los derechos reservados 2022. Propiedad de Cyntia, Norkis y Lidianys';
-  const container = document.createElement('div');
+  // const container = document.createElement('div');
   // creacion de los input y sus atributos
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
@@ -68,7 +68,12 @@ export const home = () => {
   aRegister.innerText = 'Registrarse';
   const containerForm = document.createElement('div');
   containerForm.classList.add('containerForm');
-
+  const login = document.createElement('form');
+  login.classList.add('login');
+  login.appendChild(inputEmail);
+  login.appendChild(inputPassword);
+  login.appendChild(button);
+  containerForm.appendChild(login);
   const generalContainer = document.createElement('div');
   generalContainer.classList.add('generalContainer');
   containerForm.appendChild(inputEmail);
@@ -77,17 +82,10 @@ export const home = () => {
   // containerForm.appendChild(a);
   containerForm.appendChild(aRegister);
   containerForm.appendChild(buttonGoogle);
-  container.appendChild(containerForm);
   generalContainer.appendChild(headerPart);
   generalContainer.appendChild(asideLogo);
-  generalContainer.appendChild(container);
+  generalContainer.appendChild(containerForm);
   generalContainer.appendChild(footPart);
 
-  const login = document.createElement('form');
-  login.classList.add('login');
-  login.appendChild(inputEmail);
-  login.appendChild(inputPassword);
-  login.appendChild(button);
-  generalContainer.appendChild(login);
   return generalContainer;
 };
