@@ -1,0 +1,43 @@
+
+
+.headerWall{
+    background-size: cover;
+
+   justify-content: space-around;
+    width: -webkit-fill-available;
+    background-color: #1D65A6
+    ;
+}
+img {
+    width: 90px;
+    height: 90px;
+    border-radius: 90%;
+}
+.logo{
+    border-radius: 90%;
+    background-color: #1D65A6;
+}
+.addComent{
+    border-radius: 90%;
+    background-color: #1D65A6;
+}
+
+.home{
+    border-radius: 90%;
+    background-color: #1D65A6;
+}
+.perfile{
+    border-radius: 95%;
+    background-color: #1D65A6;
+}
+.logout{
+    border-radius: 110%;
+    background-color: #ac0a0a;
+}
+@media (min-width:1024px){
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 90%;
+}
+}

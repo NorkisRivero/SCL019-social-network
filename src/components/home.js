@@ -19,7 +19,6 @@ export const home = () => {
   // creacion de dos articulos y sus clases
   // insertar en el articulo img y reseña
   const asideLogo = document.createElement('aside');
-  asideLogo.classList.add('asideLogo');
   divImg.appendChild(imgLogo);
   asideLogo.appendChild(divImg);
   asideLogo.appendChild(review);
@@ -30,6 +29,7 @@ export const home = () => {
   const footPart = document.createElement('footer');
   footPart.classList.add('footer');
   footPart.innerText = 'Todos los derechos reservados 2022. Propiedad de Cyntia, Norkis y Lidianys';
+  const container = document.createElement('div');
   // creacion de los input y sus atributos
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
@@ -48,8 +48,11 @@ export const home = () => {
   button.classList.add('iniciarSesion');
   // creacion de link y seteo del atributo
   const a = document.createElement('a');
-  a.setAttribute('href', '');
   a.innerText = '¿Olvidaste tu contraseña?';
+  // a.classList.add('recoverPassword');
+  // a.addEventListener('click', () => {
+  //   a.setAttribute('href', '#/restorePassword');
+  // });
   // creacion de boton
   const buttonGoogle = document.createElement('button');
   buttonGoogle.innerText = 'Continuar con Google';
@@ -68,35 +71,23 @@ export const home = () => {
 
   const generalContainer = document.createElement('div');
   generalContainer.classList.add('generalContainer');
+  containerForm.appendChild(inputEmail);
+  containerForm.appendChild(inputPassword);
+  containerForm.appendChild(button);
+  // containerForm.appendChild(a);
+  containerForm.appendChild(aRegister);
+  containerForm.appendChild(buttonGoogle);
+  container.appendChild(containerForm);
+  generalContainer.appendChild(headerPart);
+  generalContainer.appendChild(asideLogo);
+  generalContainer.appendChild(container);
+  generalContainer.appendChild(footPart);
+
   const login = document.createElement('form');
   login.classList.add('login');
   login.appendChild(inputEmail);
   login.appendChild(inputPassword);
   login.appendChild(button);
-  containerForm.appendChild(login);
-  containerForm.appendChild(a);
-  containerForm.appendChild(aRegister);
-  containerForm.appendChild(buttonGoogle);
-  generalContainer.appendChild(headerPart);
-  generalContainer.appendChild(asideLogo);
-  generalContainer.appendChild(containerForm);
-  generalContainer.appendChild(footPart);
-
-  // Evento para Ingresar
-  // generalContainer
-  //   .querySelector('.iniciarSesion')
-  //   .addEventListener('click', () => {
-  //     const emailRegister = document.querySelector('.inputEmail').value;
-  //     const passwordRegister = document.querySelector('.inputPassword').value;
-  //     signUp(emailRegister, passwordRegister);
-  //   });
-
-  // // Evento para ingresar con Google
-  // generalContainer
-  //   .querySelector('.googleButton')
-  //   .addEventListener('click', () => {
-  //     loginWithGoogle();
-  //     // window.location.hash = "#/wallpage";
-  //   });
+  generalContainer.appendChild(login);
   return generalContainer;
 };

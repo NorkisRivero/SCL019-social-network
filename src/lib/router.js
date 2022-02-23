@@ -1,7 +1,6 @@
 import { home } from '../components/home.js';
 import { register } from '../components/register.js';
 import { wall } from '../components/wall.js';
-
 import { eventsRegister, login } from './index.js';
 // import { wallTemplate } from '../templates/wallpage.js';
 
@@ -19,8 +18,8 @@ export const router = (hash) => {
     eventsRegister();
   } else if (hash === '#/wall') {
     rootBox.appendChild(wall());
-    //   } else if (hash === '#/showpost') {
-    //     rootBox.appendChild(wallTemplate());
-    //   }
+  // } else if (hash === '#/restorePassword') {
+  //   rootBox.appendChild(recoverPassword());
+  // }
   }
 };

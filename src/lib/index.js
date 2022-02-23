@@ -12,8 +12,9 @@ import {
   signOut,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  sendEmailVerification,
-  updateProfile,
+  // sendEmailVerification,
+  // sendPasswordResetEmail,
+  // updateProfile,
   onAuthStateChanged,
   GoogleAuthProvider,
   getRedirectResult,
@@ -135,3 +136,15 @@ onAuthStateChanged(auth, (user) => {
   checkgoogle(auth);
   // window.location.hash = '#/wall';
 });
+// export const passwordRecovery = () => {
+//   const emailAddress = document.querySelector('#email3').value;
+//   auth.sendPasswordResetEmail(emailAddress).then(() => {
+//     document.querySelector('.result').innerHTML = 'Tu email fue enviado con exito';
+//     // Email sent.
+//     window.location.hash = '';
+//   }).catch((error) => {
+//     // An error happened.
+//     document.querySelector('.result').innerHTML = error.message;
+//     window.location.hash = '';
+//   });
+// };
