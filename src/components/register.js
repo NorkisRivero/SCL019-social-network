@@ -30,11 +30,8 @@ export const register = () => {
 
   // inputPassword.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
 
-  // inputPassword.setAttribute('title', 'Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres');
-
   inputPassword2.setAttribute('placeholder', 'Repetir contraseña');
   // inputPassword2.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
-  // inputPassword2.setAttribute('title', 'Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres');
 
   // ('title', 'Debe contener al menos un número y una letra mayúscula
   // y minúscula, y al menos 8 o más caracteres');
@@ -42,7 +39,6 @@ export const register = () => {
   // inputPassword2.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
   // inputPassword2.setAttribute('title', 'Debe contener al menos un número y una letra 
   //  mayúscula y minúscula, y al menos 8 o más caracteres');
-
 
   inputPassword2.setAttribute('type', 'password');
   // inputAge.setAttribute('placeholder', 'Edad');

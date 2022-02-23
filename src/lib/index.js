@@ -56,19 +56,31 @@ export const eventsRegister = () => {
       });
   });
 };
-export const logout = () => {
-  const logoutButton = document.querySelector('.logout');
-  logoutButton.addEventListener('click', () => {
-    signOut(auth)
-      .then(() => {
-        console.log('el usuario salió');
+// export const logout = () => {
+//   const logoutButton = document.querySelector('.logout');
+//   logoutButton.addEventListener('click', () => {
+//     signOut(auth)
+//       .then(() => {
+//         console.log('el usuario salió');
 
-        window.location.hash = '#/home';
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  });
+//         window.location.hash = '';
+//       })
+//       .catch((err) => {
+//         console.log(err.message);
+//       });
+//   });
+// };
+
+export const logout = () => {
+  signOut(auth)
+    .then(() => {
+      console.log('el usuario salió');
+
+      window.location.hash = '#/home';
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 
 export const login = () => {
@@ -81,14 +93,13 @@ export const login = () => {
       .then((cred) => {
         console.log('user logged in:', cred.user);
 
-        // window.location.hash = '#/muro';
+        window.location.hash = '#/wall';
       })
       .catch((err) => {
         console.log(err.message);
       });
   });
 };
-
 export const checkgoogle = () => {
   getRedirectResult(auth)
     .then((result) => {
@@ -113,14 +124,14 @@ export const checkgoogle = () => {
 };
 
 // autentifizacion de cambios de estado
-
 const provider = new GoogleAuthProvider();
 
 export const Iniciargoogle = () => {
   signInWithRedirect(auth, provider);
+  window.location.hash = '#/wall';
 };
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
   checkgoogle(auth);
-  // window.location.hash = 'muro'
+  // window.location.hash = '#/wall';
 });

@@ -3,7 +3,6 @@
 
 import { Iniciargoogle } from '../lib/index.js';
 
-
 export const home = () => {
   // aqui tu codigo del formulario
   // creacion de logo y reseña
@@ -20,6 +19,7 @@ export const home = () => {
   // creacion de dos articulos y sus clases
   // insertar en el articulo img y reseña
   const asideLogo = document.createElement('aside');
+  asideLogo.classList.add('asideLogo');
   divImg.appendChild(imgLogo);
   asideLogo.appendChild(divImg);
   asideLogo.appendChild(review);
@@ -30,7 +30,6 @@ export const home = () => {
   const footPart = document.createElement('footer');
   footPart.classList.add('footer');
   footPart.innerText = 'Todos los derechos reservados 2022. Propiedad de Cyntia, Norkis y Lidianys';
-  const container = document.createElement('div');
   // creacion de los input y sus atributos
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
@@ -69,24 +68,20 @@ export const home = () => {
 
   const generalContainer = document.createElement('div');
   generalContainer.classList.add('generalContainer');
-  containerForm.appendChild(inputEmail);
-  containerForm.appendChild(inputPassword);
-  containerForm.appendChild(button);
-  containerForm.appendChild(a);
-  containerForm.appendChild(aRegister);
-  containerForm.appendChild(buttonGoogle);
-  container.appendChild(containerForm);
-  generalContainer.appendChild(headerPart);
-  generalContainer.appendChild(asideLogo);
-  generalContainer.appendChild(container);
-  generalContainer.appendChild(footPart);
-
   const login = document.createElement('form');
   login.classList.add('login');
   login.appendChild(inputEmail);
   login.appendChild(inputPassword);
   login.appendChild(button);
-  generalContainer.appendChild(login);
+  containerForm.appendChild(login);
+  containerForm.appendChild(a);
+  containerForm.appendChild(aRegister);
+  containerForm.appendChild(buttonGoogle);
+  generalContainer.appendChild(headerPart);
+  generalContainer.appendChild(asideLogo);
+  generalContainer.appendChild(containerForm);
+  generalContainer.appendChild(footPart);
+
   // Evento para Ingresar
   // generalContainer
   //   .querySelector('.iniciarSesion')
