@@ -77,7 +77,7 @@ export const logout = () => {
     .then(() => {
       console.log('el usuario salió');
 
-      window.location.hash = '';
+      window.location.hash = '#/home';
     })
     .catch((err) => {
       console.log(err.message);
