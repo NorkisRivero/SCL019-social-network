@@ -12,7 +12,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  // sendEmailVerification,
+  sendEmailVerification,
   // sendPasswordResetEmail,
   // updateProfile,
   onAuthStateChanged,
@@ -38,6 +38,18 @@ const app = initializeApp(firebaseConfig);
 // // Initialize Firebase
 
 export const auth = getAuth(app);
+// Envía un mensaje de verificación a un usuario
+const emailCheck = () => {
+  sendEmailVerification(auth.currentUser)
+    .then(() => {
+      // Email verification sent!
+      console.log('Correo enviado');
+      alert('Hemos enviado un correo de verificación para validar tu cuenta');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 export const eventsRegister = () => {
   const signupForm = document.querySelector('.divFormulario');
@@ -48,6 +60,7 @@ export const eventsRegister = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((cred) => {
         console.log('User created: ', cred.user);
+        emailCheck();
         signupForm.reset();
 
         window.location.hash = '#/home';
@@ -136,15 +149,3 @@ onAuthStateChanged(auth, (user) => {
   checkgoogle(auth);
   // window.location.hash = '#/wall';
 });
-// export const passwordRecovery = () => {
-//   const emailAddress = document.querySelector('#email3').value;
-//   auth.sendPasswordResetEmail(emailAddress).then(() => {
-//     document.querySelector('.result').innerHTML = 'Tu email fue enviado con exito';
-//     // Email sent.
-//     window.location.hash = '';
-//   }).catch((error) => {
-//     // An error happened.
-//     document.querySelector('.result').innerHTML = error.message;
-//     window.location.hash = '';
-//   });
-// };
