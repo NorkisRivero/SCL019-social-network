@@ -40,7 +40,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const eventsRegister = () => {
-  const signupForm = document.querySelector('.signup');
+  const signupForm = document.querySelector('.divFormulario');
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = signupForm.email.value;

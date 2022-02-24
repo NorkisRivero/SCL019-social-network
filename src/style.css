@@ -9,6 +9,11 @@ html, body{
  display: grid;
 
 }
+.header {
+   display: grid;
+   grid-area: header;
+}
+
 /* container de html*/
 .Container{
    width: 100%;
@@ -37,8 +42,6 @@ html, body{
 a{
    color: azure;
 }
-
-
 .asideLogo{
   grid-area: "asideLogo";
 }
@@ -46,8 +49,8 @@ a{
   text-align: center;
 }
 .imgLogo {
-  width:29%;
-  height: 59%;
+  width:32%;
+  height: 100%;
   border-radius: 50%;
   text-align: center;
 }
@@ -60,7 +63,7 @@ a{
   text-align: center;
 }
 /*contenedor del formulario y botones*/
-.containerForm {
+.containerFormHome {
   grid-area: 'containerForm';
   display: grid;
   gap:0.5em;
@@ -100,10 +103,6 @@ input{
    padding-top: 6%;
 }
 
-.header {
-   display: grid;
-   grid-area: header;
-}
 
 @media (min-width:1024px){
 
@@ -127,7 +126,7 @@ height: 45%;
 
 }
 .imgLogo {
-width:26%;
+width:31%;
 height: 100%;
 border-radius: 50%;
 text-align: center;
@@ -149,7 +148,7 @@ text-align: center;
    text-align: center;
 
 }
-.containerForm {
+.containerFormHome {
    display: grid;
    width: 100%;
    height: 100%;

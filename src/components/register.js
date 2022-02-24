@@ -1,4 +1,25 @@
 export const register = () => {
+  // div del logo y reseña
+  const divImg = document.createElement('div');
+  divImg.classList.add('divImg');
+  const imgLogo = document.createElement('img');
+  imgLogo.setAttribute('src', './img/pruebaDeLogo.png');
+  imgLogo.classList.add('imgLogo');
+  const review = document.createElement('h1');
+  review.classList.add('review');
+  review.innerText = 'Red informativa para migrantes y futuros migrantes en Chile';
+  // insertar en el articulo img y reseña
+  const asideLogo = document.createElement('aside');
+  divImg.appendChild(imgLogo);
+  asideLogo.appendChild(divImg);
+  asideLogo.appendChild(review);
+  // header
+  const headerPart = document.createElement('header');
+  headerPart.classList.add('header');
+  const footPart = document.createElement('footer');
+  // footer
+  footPart.classList.add('footer');
+  footPart.innerText = 'Todos los derechos reservados 2022. Propiedad de Cyntia, Norkis y Lidianys';
   // const inputName = document.createElement('input');
   // const inputSurname = document.createElement('input');
   // const inputUser = document.createElement('input');
@@ -52,22 +73,28 @@ export const register = () => {
   a.setAttribute('href', '#/home');
 
   const submit = document.createElement('button');
-  submit.innerHTML = 'Register';
-  //
-  const divContenedor = document.createElement('form'); // ya no es un div sino un form
+  submit.innerHTML = 'Registrarse';
+  submit.classList.add('registrarse');
+  // div del formulario
+  const divFormulario = document.createElement('form'); // ya no es un div sino un form
+  divFormulario.classList.add('divFormulario');
+  // div general
+  const divContenedor = document.createElement('div');
   divContenedor.classList.add('signup');
-  //
+  divFormulario.appendChild(inputMail);
+  divFormulario.appendChild(inputPassword);
+  divFormulario.appendChild(inputPassword2);
+  divFormulario.appendChild(submit);
   // divContenedor.appendChild(inputName);
   // divContenedor.appendChild(inputSurname);
   // divContenedor.appendChild(inputUser);
-  divContenedor.appendChild(inputMail);
-  divContenedor.appendChild(inputPassword);
-  divContenedor.appendChild(inputPassword2);
+  divContenedor.appendChild(headerPart);
+  divContenedor.appendChild(asideLogo);
+  divContenedor.appendChild(divFormulario);
+  divContenedor.appendChild(footPart);
   // divContenedor.appendChild(inputAge);
   // divContenedor.appendChild(inputNationality);
   // divContenedor.appendChild(inputResident);
   // divContenedor.appendChild(inputResident);
-  divContenedor.appendChild(submit);
-
   return divContenedor;
 };
