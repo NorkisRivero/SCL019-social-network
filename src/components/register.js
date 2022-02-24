@@ -1,3 +1,5 @@
+import { Iniciargoogle } from '../lib/index.js';
+
 export const register = () => {
   // div del logo y reseña
   const divImg = document.createElement('div');
@@ -58,7 +60,7 @@ export const register = () => {
   // y minúscula, y al menos 8 o más caracteres');
 
   // inputPassword2.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
-  // inputPassword2.setAttribute('title', 'Debe contener al menos un número y una letra 
+  // inputPassword2.setAttribute('title', 'Debe contener al menos un número y una letra
   //  mayúscula y minúscula, y al menos 8 o más caracteres');
 
   inputPassword2.setAttribute('type', 'password');
@@ -75,6 +77,20 @@ export const register = () => {
   const submit = document.createElement('button');
   submit.innerHTML = 'Registrarse';
   submit.classList.add('registrarse');
+  // crear a de logearse
+  const aHome = document.createElement('a');
+  aHome.classList.add('aHome');
+  aHome.setAttribute('href', '#/home');
+  aHome.innerText = '¿Ya tienes cuenta? Inicia sesión.';
+
+  // creacion de boton
+  const buttonGoogle = document.createElement('button');
+  buttonGoogle.innerText = 'Continuar con Google';
+  buttonGoogle.classList.add('googleButton');
+  buttonGoogle.addEventListener('click', () => {
+  // console.log('cualquier cosa');
+    Iniciargoogle();
+  });
   // div del formulario
   const divFormulario = document.createElement('form'); // ya no es un div sino un form
   divFormulario.classList.add('divFormulario');
@@ -85,6 +101,8 @@ export const register = () => {
   divFormulario.appendChild(inputPassword);
   divFormulario.appendChild(inputPassword2);
   divFormulario.appendChild(submit);
+  divFormulario.appendChild(aHome);
+  divFormulario.appendChild(buttonGoogle);
   // divContenedor.appendChild(inputName);
   // divContenedor.appendChild(inputSurname);
   // divContenedor.appendChild(inputUser);

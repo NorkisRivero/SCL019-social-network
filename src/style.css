@@ -63,7 +63,7 @@ a{
   text-align: center;
 }
 /*contenedor del formulario y botones*/
-.containerFormHome {
+.containerForm {
   grid-area: 'containerForm';
   display: grid;
   gap:0.5em;
@@ -82,17 +82,21 @@ input{
    border-color: orange;
    width: 15em;
 }
+.registrarse{
+   width: 15em;
+}
 .iniciarSesion{
    background-color: blue;
    color: white;
    border-color: orange;
    height: 2em;
+   width: 15em;
 }
 .googleButton{
    border-radius: 3em;
    border-color: orange;
    height: 2em;
-   width: 100%;
+   width: 15em;
 }
 .footer{
    display: grid;
@@ -148,23 +152,25 @@ text-align: center;
    text-align: center;
 
 }
-.containerFormHome {
+.containerForm {
    display: grid;
    width: 100%;
    height: 100%;
    text-align: center;
+
 }
 input{
    height: 3.1em;
    border-color: orange;
    width: 25em;
 }
+
 .iniciarSesion{
    background-color: blue;
    color: white;
    border-color: orange;
    height: 3.1em;
-   /*width: 20.5em;*/
+   width: 25em;
 }
 a{
    padding:0;
@@ -175,10 +181,14 @@ a{
   height: 2em;
 
 }
+.registrarse{
+   width: 25em;
+}
 .googleButton{
    border-radius: 5em;
    border-color: orange;
    height: 3.1em;
+   width: 25em;
 
 }
 /*.login{
