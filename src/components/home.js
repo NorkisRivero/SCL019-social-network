@@ -66,7 +66,7 @@ export const home = () => {
   aRegister.classList.add('aregister');
   aRegister.setAttribute('href', '#/register');
   aRegister.innerText = 'Registrarse';
-  const containerForm = document.createElement('div');
+  const containerForm = document.createElement('form');
   containerForm.classList.add('containerForm');
   const login = document.createElement('form');
   login.classList.add('login');

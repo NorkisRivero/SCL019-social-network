@@ -85,7 +85,7 @@ export const logout = () => {
 };
 
 export const login = () => {
-  const loginForm = document.querySelector('.login');
+  const loginForm = document.querySelector('.containerForm');
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = loginForm.email.value;
