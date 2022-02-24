@@ -46,13 +46,6 @@ export const home = () => {
   const button = document.createElement('button');
   button.innerText = 'Iniciar Sesión';
   button.classList.add('iniciarSesion');
-  // creacion de link y seteo del atributo
-  const a = document.createElement('a');
-  a.innerText = '¿Olvidaste tu contraseña?';
-  // a.classList.add('recoverPassword');
-  // a.addEventListener('click', () => {
-  //   a.setAttribute('href', '#/restorePassword');
-  // });
   // creacion de boton
   const buttonGoogle = document.createElement('button');
   buttonGoogle.innerText = 'Continuar con Google';
