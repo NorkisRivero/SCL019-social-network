@@ -56,14 +56,13 @@ const emailCheck = () => {
     });
 };
 // creacion de un registro llamado users
-const docRef = doc(firestore, 'users');
 // guardado del mail y contraseña del usuario
 async function createUser(email, password) {
-  const docData = {
+  const docRef = await addDoc(collection(firestore, 'users'), {
     emailUser: email,
     passwordUser: password,
-  };
-  await setDoc(docRef, docData, { marge: true });
+  });
+  console.log('documento escrito con id', docRef.id);
 }
 
 export const eventsRegister = () => {
