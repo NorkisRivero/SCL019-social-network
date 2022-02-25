@@ -2,6 +2,8 @@ import { home } from '../components/home.js';
 import { register } from '../components/register.js';
 import { wall } from '../components/wall.js';
 import { eventsRegister, login } from './index.js';
+// import { sendLinkEMail, login } from './index.js';
+
 // import { wallTemplate } from '../templates/wallpage.js';
 
 export const router = (hash) => {
@@ -16,6 +18,7 @@ export const router = (hash) => {
   } else if (hash === '#/register') {
     rootBox.appendChild(register());
     eventsRegister();
+    // sendLinkEMail();
   } else if (hash === '#/wall') {
     rootBox.appendChild(wall());
   // } else if (hash === '#/restorePassword') {
