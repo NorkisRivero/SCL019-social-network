@@ -19,6 +19,8 @@ import {
   GoogleAuthProvider,
   getRedirectResult,
   signInWithRedirect,
+  isSignInWithEmailLink,
+   signInWithEmailLink,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -48,6 +50,7 @@ const emailCheck = () => {
     })
     .catch((error) => {
       console.log(error);
+      alert(error.message);
     });
 };
 
@@ -110,7 +113,7 @@ export const login = () => {
         window.location.hash = '#/wall';
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log('Error', err.message);
       });
   });
 };
@@ -144,8 +147,9 @@ export const Iniciargoogle = () => {
   signInWithRedirect(auth, provider);
   window.location.hash = '#/wall';
 };
+
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
   checkgoogle(auth);
-  // window.location.hash = '#/wall';
+  window.location.hash = '#/wall';
 });
