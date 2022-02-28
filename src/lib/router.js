@@ -1,7 +1,7 @@
 import { home } from '../components/home.js';
 import { register } from '../components/register.js';
 import { wall } from '../components/wall.js';
-import { eventsRegister, Iniciargoogle, login } from './index.js';
+import { eventsRegister, login } from './index.js';
 // import { sendLinkEMail, login } from './index.js';
 
 // import { wallTemplate } from '../templates/wallpage.js';

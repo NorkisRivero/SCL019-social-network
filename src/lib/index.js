@@ -2,13 +2,13 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js';
 // // import { firestore } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
 
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  doc,
-  setDoc,
-} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+// import {
+//   getFirestore,
+//   // collection,
+//   // addDoc,
+//   // doc,
+//   // setDoc,
+// } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
 import {
   getAuth,
@@ -40,7 +40,7 @@ const firebaseConfig = {
 };
 // inicializacion de base de datos y firestore
 const app = initializeApp(firebaseConfig);
-const firestore = getFirestore();
+// const firestore = getFirestore();
 
 export const auth = getAuth(app);
 // Envía un mensaje de verificación a un usuario
@@ -205,6 +205,7 @@ export const Iniciargoogle = () => {
 };
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
-  checkgoogle(auth);
   window.location.hash = '#/wall';
+
+  checkgoogle(auth);
 });

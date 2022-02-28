@@ -75,9 +75,13 @@ export const home = () => {
   // containerForm.appendChild(a);
   containerForm.appendChild(aRegister);
   containerForm.appendChild(buttonGoogle);
+
   generalContainer.appendChild(headerPart);
   generalContainer.appendChild(asideLogo);
   generalContainer.appendChild(containerForm);
+  // si el buttongoogle se queda dentro del form lanza los errores de mail y contraseña vacios
+  // generalContainer.appendChild(buttonGoogle);
+
   generalContainer.appendChild(footPart);
 
   return generalContainer;
