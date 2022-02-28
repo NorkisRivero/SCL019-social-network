@@ -51,19 +51,21 @@ export const register = () => {
   inputPassword.setAttribute('name', 'password');
   inputPassword.setAttribute('type', 'password');
 
-  // inputPassword.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
+  inputPassword.setAttribute('pattern', '.{8,}');
+  inputPassword.setAttribute('title', 'La contraseña debe contener como minimo 8 digitos');
 
   inputPassword2.setAttribute('placeholder', 'Repetir contraseña');
-  // inputPassword2.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
+  inputPassword2.setAttribute('pattern', '.{8,}');
 
   // ('title', 'Debe contener al menos un número y una letra mayúscula
-  // y minúscula, y al menos 8 o más caracteres');
+  // y minúscula, y al menos 8 o más caracteres';
 
-  // inputPassword2.setAttribute('pattern', '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
-  // inputPassword2.setAttribute('title', 'Debe contener al menos un número y una letra
-  //  mayúscula y minúscula, y al menos 8 o más caracteres');
+  inputPassword2.setAttribute('pattern', '.{8,}');
+  inputPassword2.setAttribute('title', 'La contraseña debe contener como minimo 8 digitos');
 
   inputPassword2.setAttribute('type', 'password');
+  inputPassword2.setAttribute('name', 'password2');
+
   // inputAge.setAttribute('placeholder', 'Edad');
   // inputNationality.setAttribute('placeholder', 'Nacionalidad');
   // inputResident.setAttribute('placeholder', 'Reside en Chile');
