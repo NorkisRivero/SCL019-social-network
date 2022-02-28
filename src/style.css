@@ -126,13 +126,13 @@ grid-template:
 }
 .divImg{
 text-align: center;
-height: 45%;
+height: 100%;
 
 }
 .imgLogo {
-width:31%;
-height: 100%;
-border-radius: 50%;
+width:5.6em;
+height: 5.6em;
+/* border-radius: 50%; */
 text-align: center;
 }
 
