@@ -107,9 +107,16 @@ export const login = () => {
     const password = loginForm.password.value;
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
-        console.log('user logged in:', cred.user);
-
-        window.location.hash = '#/wall';
+        console.log('cred:', cred);
+        // console.log('user logged in:', cred.user);
+        const user = cred.user;
+        console.log(user);
+        if (user.emailVerified) {
+          window.location.hash = '#/wall';
+        } else {
+          window.location.hash = '#/home';
+          alert('usuario no verificado');
+        }
       })
       .catch((err) => {
         console.log(err.message);
