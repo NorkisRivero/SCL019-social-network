@@ -57,6 +57,7 @@ const emailCheck = () => {
 };
 // creacion de un registro llamado users
 // guardado del mail y contraseña del usuario
+// se recomienda no usar setDoc y doc, salta error invalid document referencia error 94
 async function createUser(email, password) {
   const docRef = await addDoc(collection(firestore, 'users'), {
     emailUser: email,
