@@ -2,13 +2,13 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js';
 // // import { firestore } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
 
-// import {
-//   getFirestore,
-//   // collection,
-//   // addDoc,
-//   // doc,
-//   // setDoc,
-// } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  // doc,
+  // setDoc,
+} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
 import {
   getAuth,
@@ -40,7 +40,7 @@ const firebaseConfig = {
 };
 // inicializacion de base de datos y firestore
 const app = initializeApp(firebaseConfig);
-// const firestore = getFirestore();
+const firestore = getFirestore();
 
 export const auth = getAuth(app);
 // Envía un mensaje de verificación a un usuario
@@ -55,16 +55,27 @@ const emailCheck = () => {
       console.log(error);
     });
 };
-// creacion de un registro llamado users
-// guardado del mail y contraseña del usuario
+// creacion de un registro llamado Post
+// guardado del comentario
 // se recomienda no usar setDoc y doc, salta error invalid document referencia error 94
-// async function createUser(email, password) {
-//   const docRef = await addDoc(collection(firestore, 'users'), {
-//     emailUser: email,
-//     passwordUser: password,
-//   });
-//   console.log('documento escrito con id', docRef.id);
-// }
+export async function createPost(coment) {
+  console.log('createpost antes de collection');
+
+  const docRef = await addDoc(collection(firestore, 'Post'), {
+    // userId: auth.currentUser.uid,
+    // name: auth.currentUser.displayName,
+    // email: auth.currentUser.email,
+    comentUser: coment.name.value,
+    datepost: Date.now(),
+    likes: [],
+    likesCounter: 0,
+  });
+  console.log('documento escrito con id', docRef.id);
+}
+// export const addPost = (buttonToPost) => {
+//   console.log('add post antes de createpost');
+//   createPost(buttonToPost.name.value);
+// };
 
 export const eventsRegister = () => {
   const signupForm = document.querySelector('.divFormulario');
