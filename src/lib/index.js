@@ -49,7 +49,7 @@ const emailCheck = () => {
     .then(() => {
       // Email verification sent!
       console.log('Correo enviado');
-      alert('Hemos enviado un correo de verificación para validar tu cuenta');
+      alert('Hemos enviado un correo de verificación para validar tu cuenta. Es necesario que lo valide para iniciar sesión');
     })
     .catch((error) => {
       console.log(error);
@@ -72,21 +72,57 @@ export const eventsRegister = () => {
     e.preventDefault();
     const email = signupForm.email.value;
     const password = signupForm.password.value;
-    // createUser(email, password);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        console.log('User created: ', cred.user);
-        emailCheck();
-        signupForm.reset();
+    const password2 = signupForm.password2.value;
+    if (password === password2) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((cred) => {
+          console.log('User created: ', cred.user);
+          emailCheck();
+          signupForm.reset();
 
-        window.location.hash = '#/home';
-      }).catch((err) => {
-        console.log(err.message);
-        alert(err.message);
-      });
+          window.location.hash = '#/home';
+        }).catch((err) => {
+          console.log(err.message);
+
+          switch (err.message) {
+            case 'Firebase: Error (auth/invalid-email).':
+              alert('el formato del correo es inválido');
+              break;
+            case 'Firebase: Error (auth/email-already-in-use).':
+              alert('El correo ingresado ya está registrado');
+              break;
+            default:
+          }
+
+          // alert(err.message);
+        });
+    } else {
+      alert('Ambas contraseñas deben ser iguales');
+    }
+    // createUser(email, password);
+    //   createUserWithEmailAndPassword(auth, email, password)
+    //     .then((cred) => {
+    //       console.log('User created: ', cred.user);
+    //       emailCheck();
+    //       signupForm.reset();
+
+    //       window.location.hash = '#/home';
+    //     }).catch((err) => {
+    //       console.log(err.message);
+
+    //       switch (err.message) {
+    //         case 'Firebase: Error (auth/invalid-email).':
+    //           alert('el formato del correo es inválido');
+    //           break;
+    //         default:
+    //           break;
+    //       }
+
+  //       // alert(err.message);
+  //     });
+  // });
   });
 };
-
 export const logout = () => {
   signOut(auth)
     .then(() => {
@@ -120,6 +156,21 @@ export const login = () => {
       })
       .catch((err) => {
         console.log(err.message);
+        switch (err.message) {
+          case 'Firebase: Error (auth/user-not-found).':
+            alert('El correo ingresado no está registrado.');
+            break;
+          case 'Firebase: Error (auth/wrong-password).':
+            alert('la contraseña ingresada es incorrecta');
+            break;
+          // case 'Firebase: Error (auth/internal-error).':
+          //   alert('El ingreso de contraseña es obligatorio.');
+          //   break;
+          // case 'Firebase: Error (auth/invalid-email).':
+          //   alert('Debe ingresar un correo validado');
+          //   break;
+          default:
+        }
       });
   });
 };
@@ -151,9 +202,9 @@ const provider = new GoogleAuthProvider();
 
 export const Iniciargoogle = () => {
   signInWithRedirect(auth, provider);
-  window.location.hash = '#/wall';
 };
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
   checkgoogle(auth);
+  window.location.hash = '#/wall';
 });
