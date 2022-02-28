@@ -57,8 +57,9 @@ a{
 .review{
   font-family:Arial, Helvetica, sans-serif;
   font-size: 0.8em;
-  padding-top: 2%;
+  /* padding-top: 2%; */
   padding: 1em;
+  padding-top: 2%;
   color: rgb(0, 0, 0);
   text-align: center;
 }

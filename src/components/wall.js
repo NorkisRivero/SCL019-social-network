@@ -1,4 +1,5 @@
 import { logout } from '../lib/index.js';
+import { post } from './post.js';
 
 export const wall = () => {
   const walls = `
@@ -17,6 +18,16 @@ export const wall = () => {
   if (buttonLogout) {
     buttonLogout.addEventListener('click', () => {
       logout();
+    });
+  }
+  const buttonAddComent = divHeader.querySelector('.addComent');
+  if (buttonAddComent) {
+    buttonAddComent.addEventListener('click', () => {
+      const postAdd = post();
+      const sectionPostAdd = document.createElement('section');
+      sectionPostAdd.classList.add('sectionPostAdd');
+      sectionPostAdd.appendChild(postAdd);
+      divHeader.appendChild(sectionPostAdd);
     });
   }
 
