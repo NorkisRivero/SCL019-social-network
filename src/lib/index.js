@@ -6,6 +6,7 @@ import {
   getFirestore,
   collection,
   addDoc,
+  Timestamp,
   // doc,
   // setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
@@ -58,19 +59,22 @@ const emailCheck = () => {
 // creacion de un registro llamado Post
 // guardado del comentario
 // se recomienda no usar setDoc y doc, salta error invalid document referencia error 94
-export async function createPost(coment) {
+export async function createPost(postForm) {
   console.log('createpost antes de collection');
-
-  const docRef = await addDoc(collection(firestore, 'Post'), {
-    // userId: auth.currentUser.uid,
-    // name: auth.currentUser.displayName,
-    // email: auth.currentUser.email,
-    comentUser: coment.name.value,
-    datepost: Date.now(),
-    likes: [],
-    likesCounter: 0,
-  });
-  console.log('documento escrito con id', docRef.id);
+  try {
+    const docRef = await addDoc(collection(firestore, 'Post'), {
+      userId: auth.currentUser.uid,
+      name: auth.currentUser.displayName,
+      email: auth.currentUser.email,
+      comentUser: postForm.coment.value,
+      datepost: Timestamp.fromDate(new Date()),
+      likes: [],
+      likesCounter: 0,
+    });
+    console.log('documento escrito con id', docRef.id);
+  } catch (err) {
+    console.log('error : ', err);
+  }
 }
 // export const addPost = (buttonToPost) => {
 //   console.log('add post antes de createpost');
@@ -213,7 +217,7 @@ const provider = new GoogleAuthProvider();
 
 export const Iniciargoogle = () => {
   signInWithRedirect(auth, provider);
-  window.location.hash = '#/wall';
+  // window.location.hash = '#/wall';
 };
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
