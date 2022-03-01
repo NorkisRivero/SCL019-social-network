@@ -6,7 +6,7 @@ export const post = () => {
     <input class="coment" id="coment" name="coment"/>
     <button class="toPost" id="toPost">Publicar</button>
     <button class="close" id="close">Cerrar</button>
-    <button class="deletePost">Eliminar Post</button>
+    
 </form>
 `;
   const divPostUser = document.createElement('div');
@@ -24,13 +24,14 @@ export const post = () => {
     // createPost(buttonToPost);
   });
 
-  // const buttonClose = document.getElementById('close');
-  // if (buttonClose) {
-  //   buttonClose.addEventListener('click', () => {
-  //     console.log('esta por cerrar y dirigir al muro');
-  //     window.location.hash = '#/wall';
-  //   });
-  // }
+  const buttonClose = divPostUser.querySelector('#close');
+
+  buttonClose.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('esta por cerrar y dirigir al muro');
+    divPostUser.innerHTML = '';
+    window.location.hash = '#/wall';
+  });
 
   return divPostUser;
 };

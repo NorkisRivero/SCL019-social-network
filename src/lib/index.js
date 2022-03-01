@@ -72,6 +72,7 @@ export async function createPost(postForm) {
       likesCounter: 0,
     });
     console.log('documento escrito con id', docRef.id);
+    postForm.reset();
   } catch (err) {
     console.log('error : ', err);
   }
