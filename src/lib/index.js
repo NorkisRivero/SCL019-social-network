@@ -217,7 +217,7 @@ const provider = new GoogleAuthProvider();
 
 export const Iniciargoogle = () => {
   signInWithRedirect(auth, provider);
-  // window.location.hash = '#/wall';
+  window.location.hash = '#/wall';
 };
 onAuthStateChanged(auth, (user) => {
   console.log('user status changed:', user);
