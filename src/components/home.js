@@ -50,8 +50,8 @@ export const home = () => {
   const buttonGoogle = document.createElement('button');
   buttonGoogle.innerText = 'Continuar con Google';
   buttonGoogle.classList.add('googleButton');
-  buttonGoogle.addEventListener('click', () => {
-    // console.log('cualquier cosa');
+  buttonGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
     Iniciargoogle();
   });
   // creacion de link y seteo del atributo

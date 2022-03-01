@@ -21,6 +21,7 @@ export const router = (hash) => {
     // sendLinkEMail();
   } else if (hash === '#/wall') {
     rootBox.appendChild(wall());
+    // createPost();
   // } else if (hash === '#/restorePassword') {
   //   rootBox.appendChild(recoverPassword());
   // }
