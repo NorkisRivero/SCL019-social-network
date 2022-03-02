@@ -85,11 +85,12 @@ export async function showPost() {
   const postAll = query(collection(firestore, 'Post'));
   const querySnapshot = await getDocs(postAll);
   const container = document.getElementById('Container');
-
+  const sectionPost = document.querySelector('#allPost');
+  sectionPost.innerHTML = '';
   querySnapshot.forEach((doc) => {
     console.log(doc.id, '=>', doc.data());
     // const container = document.getElementById('Container');
-    const sectionPost = document.querySelector('#allPost');
+    // const sectionPost = document.querySelector('#allPost');
     const divPost = document.createElement('div');
     divPost.classList.add('divPost');
     const pPost = document.createElement('p');
