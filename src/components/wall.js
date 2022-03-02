@@ -1,4 +1,4 @@
-import { logout } from '../lib/index.js';
+import { logout, showPost } from '../lib/index.js';
 import { post } from './post.js';
 
 export const wall = () => {
@@ -10,6 +10,8 @@ export const wall = () => {
 <button class = "perfile"><img src="./img/perfil.png"></button>
 <button class="logout" id="logout"><img src="./img/salir.png"></button>
 </header>
+<section id = "allPost" class = "allPost">
+</section>
 `;
   const divHeader = document.createElement('div');
   divHeader.classList.add('divHeader');
@@ -30,6 +32,7 @@ export const wall = () => {
       divHeader.appendChild(sectionPostAdd);
     });
   }
+  showPost();
 
   return divHeader;
 };

@@ -7,6 +7,8 @@ import {
   collection,
   addDoc,
   Timestamp,
+  query,
+  getDocs,
   // doc,
   // setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
@@ -77,6 +79,38 @@ export async function createPost(postForm) {
     console.log('error : ', err);
   }
 }
+export async function showPost() {
+  const postAll = query(collection(firestore, 'Post'));
+  const querySnapshot = await getDocs(postAll);
+  const container = document.getElementById('Container');
+
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, '=>', doc.data());
+    // const container = document.getElementById('Container');
+    const sectionPost = document.querySelector('#allPost');
+    const divPost = document.createElement('div');
+    divPost.classList.add('divPost');
+    const pPost = document.createElement('p');
+    const h1Post = document.createElement('h1');
+    h1Post.classList.add('h1Post');
+    pPost.classList.add('pPost');
+    const dateAll = doc.data();
+    if (dateAll.hasOwnProperty('name')) {
+      h1Post.innerHTML = doc.data().name;
+      pPost.innerHTML = doc.data().comentUser;
+    } else {
+      h1Post.innerHTML = 'Anonymus';
+
+      pPost.innerHTML = doc.data().comentUser;
+    }
+
+    divPost.appendChild(h1Post);
+    divPost.appendChild(pPost);
+    sectionPost.appendChild(divPost);
+    container.appendChild(sectionPost);
+  });
+}
+
 // export const addPost = (buttonToPost) => {
 //   console.log('add post antes de createpost');
 //   createPost(buttonToPost.name.value);
