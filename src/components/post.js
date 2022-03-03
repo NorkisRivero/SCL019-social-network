@@ -6,7 +6,6 @@ export const post = () => {
     <input class="coment" id="coment" name="coment" placeholder="Escriba su publicación"/>
     <button class="toPost" id="toPost">Publicar</button>
     <button class="close" id="close">Cerrar</button>
-    <button class="deletePost">Eliminar Post</button>
 </form>
 `;
   const divPostUser = document.createElement('div');
