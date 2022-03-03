@@ -9,7 +9,10 @@ import {
   Timestamp,
   query,
   getDocs,
-  // doc,
+  updateDoc,
+  increment,
+  doc,
+  orderBy,
   // setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
@@ -58,37 +61,21 @@ const emailCheck = () => {
       console.log(error);
     });
 };
-// creacion de un registro llamado Post
-// guardado del comentario
-// se recomienda no usar setDoc y doc, salta error invalid document referencia error 94
-// export async function createPost(postForm) {
-//   console.log('createpost antes de collection');
-//   try {
-//     const docRef = await addDoc(collection(firestore, 'Post'), {
-//       userId: auth.currentUser.uid,
-//       name: auth.currentUser.displayName,
-//       email: auth.currentUser.email,
-//       comentUser: postForm.coment.value,
-//       datepost: Timestamp.fromDate(new Date()),
-//       likes: [],
-//       likesCounter: 0,
-//     });
-//     console.log('documento escrito con id', docRef.id);
-//     postForm.reset();
-//     postForm.innerHTML = '';
-//     showPost();
-//   } catch (err) {
-//     console.log('error : ', err);
-//   }
-// }
+
+export function likePost(Post) {
+  return updateDoc(Post, { likesCounter: increment(1) });
+}
+
 export async function showPost() {
-  const postAll = query(collection(firestore, 'Post'));
+  const postAll = query(collection(firestore, 'Post'), orderBy('datepost', 'desc'));
+  // const postAll = firestore.collection('Post');
+
   const querySnapshot = await getDocs(postAll);
   const container = document.getElementById('Container');
   const sectionPost = document.querySelector('#allPost');
   sectionPost.innerHTML = '';
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
+  querySnapshot.forEach((documento) => {
+    console.log(documento.id, '=>', documento.data());
     // const container = document.getElementById('Container');
     // const sectionPost = document.querySelector('#allPost');
     const divPost = document.createElement('div');
@@ -97,19 +84,34 @@ export async function showPost() {
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
     pPost.classList.add('pPost');
-    const dateAll = doc.data();
+    const dateAll = documento.data();
     const buttonLike = document.createElement('button');
     buttonLike.classList.add('like');
     // buttonLike.innerHTML = '🤍';
-    buttonLike.innerHTML = '💗';
-
+    // buttonLike.innerHTML = '💗';
+    // intento de escuchar y cambiar el clic
+    // buttonLike.innerHTML = `🤍 ${doc.data().likesCounter}`;
+    buttonLike.addEventListener('click', async () => {
+      console.log('doc:', documento);
+      const countLike = documento.data().likesCounter + 1;
+      console.log('el contador de like es:', countLike);
+      buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
+      try {
+        console.log('el id del post es:', documento.id);
+      } catch (error) {
+        console.log('el error es:', error);
+      }
+      await likePost(doc(firestore, 'Post', documento.id));
+      console.log('like actualizado');
+    });
+    buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
     if (dateAll.hasOwnProperty('name')) {
-      h1Post.innerHTML = doc.data().name;
-      pPost.innerHTML = doc.data().comentUser;
+      h1Post.innerHTML = documento.data().name;
+      pPost.innerHTML = documento.data().comentUser;
     } else {
       h1Post.innerHTML = 'Anonymus';
 
-      pPost.innerHTML = doc.data().comentUser;
+      pPost.innerHTML = documento.data().comentUser;
     }
     divPost.appendChild(h1Post);
     divPost.appendChild(pPost);
@@ -118,6 +120,10 @@ export async function showPost() {
     container.appendChild(sectionPost);
   });
 }
+//
+//
+
+//
 export async function createPost(postForm) {
   console.log('createpost antes de collection');
   try {
@@ -127,7 +133,7 @@ export async function createPost(postForm) {
       email: auth.currentUser.email,
       comentUser: postForm.coment.value,
       datepost: Timestamp.fromDate(new Date()),
-      likes: [],
+      likes: false,
       likesCounter: 0,
     });
     console.log('documento escrito con id', docRef.id);
@@ -195,9 +201,9 @@ export const eventsRegister = () => {
     //           break;
     //       }
 
-  //       // alert(err.message);
-  //     });
-  // });
+    //       // alert(err.message);
+    //     });
+    // });
   });
 };
 export const logout = () => {
@@ -254,7 +260,7 @@ export const login = () => {
 export const checkgoogle = () => {
   getRedirectResult(auth)
     .then((result) => {
-    // This gives you a Google Access Token. You can use it to access Google APIs.
+      // This gives you a Google Access Token. You can use it to access Google APIs.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
 
@@ -262,7 +268,7 @@ export const checkgoogle = () => {
       const user = result.user;
       console.log(token, user);
     }).catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
@@ -270,7 +276,7 @@ export const checkgoogle = () => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       console.log(errorCode, errorMessage, email, credential);
-    // ...
+      // ...
     });
 };
 
