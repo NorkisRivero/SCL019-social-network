@@ -3,7 +3,7 @@ import { createPost } from '../lib/index.js';
 export const post = () => {
   const postUser = `
 <form class="postUser" id="postUser">
-    <input class="coment" id="coment" name="coment"/>
+    <input class="coment" id="coment" name="coment" placeholder="Escriba su publicación"/>
     <button class="toPost" id="toPost">Publicar</button>
     <button class="close" id="close">Cerrar</button>
     <button class="deletePost">Eliminar Post</button>
@@ -18,9 +18,14 @@ export const post = () => {
   buttonToPost.addEventListener('click', (event) => {
     event.preventDefault();
     console.log('hizo clic en el boton publicar:');
-    const postForm = document.getElementById('postUser');
-    console.log('post user listener');
-    createPost(postForm);
+    const input = document.getElementById('coment');
+    if (input.value === '') {
+      alert('No ha escrito nada');
+    } else {
+      const postForm = document.getElementById('postUser');
+      console.log('post user listener');
+      createPost(postForm);
+    }
     // createPost(buttonToPost);
   });
 
