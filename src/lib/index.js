@@ -133,7 +133,7 @@ export async function createPost(postForm) {
       email: auth.currentUser.email,
       comentUser: postForm.coment.value,
       datepost: Timestamp.fromDate(new Date()),
-      likes: false,
+      likes: [],
       likesCounter: 0,
     });
     console.log('documento escrito con id', docRef.id);
