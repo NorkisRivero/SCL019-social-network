@@ -41,3 +41,11 @@ img {
     border-radius: 90%;
 }
 }
+.divPost{
+
+    background-color: rgb(127, 208, 255);
+    padding: 25px;
+    margin: 25px;
+    border: #1D65A6;
+  display: grid;
+}

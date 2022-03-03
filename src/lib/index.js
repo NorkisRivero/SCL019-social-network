@@ -61,6 +61,63 @@ const emailCheck = () => {
 // creacion de un registro llamado Post
 // guardado del comentario
 // se recomienda no usar setDoc y doc, salta error invalid document referencia error 94
+// export async function createPost(postForm) {
+//   console.log('createpost antes de collection');
+//   try {
+//     const docRef = await addDoc(collection(firestore, 'Post'), {
+//       userId: auth.currentUser.uid,
+//       name: auth.currentUser.displayName,
+//       email: auth.currentUser.email,
+//       comentUser: postForm.coment.value,
+//       datepost: Timestamp.fromDate(new Date()),
+//       likes: [],
+//       likesCounter: 0,
+//     });
+//     console.log('documento escrito con id', docRef.id);
+//     postForm.reset();
+//     postForm.innerHTML = '';
+//     showPost();
+//   } catch (err) {
+//     console.log('error : ', err);
+//   }
+// }
+export async function showPost() {
+  const postAll = query(collection(firestore, 'Post'));
+  const querySnapshot = await getDocs(postAll);
+  const container = document.getElementById('Container');
+  const sectionPost = document.querySelector('#allPost');
+  sectionPost.innerHTML = '';
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, '=>', doc.data());
+    // const container = document.getElementById('Container');
+    // const sectionPost = document.querySelector('#allPost');
+    const divPost = document.createElement('div');
+    divPost.classList.add('divPost');
+    const pPost = document.createElement('p');
+    const h1Post = document.createElement('h1');
+    h1Post.classList.add('h1Post');
+    pPost.classList.add('pPost');
+    const dateAll = doc.data();
+    const buttonLike = document.createElement('button');
+    buttonLike.classList.add('like');
+    // buttonLike.innerHTML = '🤍';
+    buttonLike.innerHTML = '💗';
+
+    if (dateAll.hasOwnProperty('name')) {
+      h1Post.innerHTML = doc.data().name;
+      pPost.innerHTML = doc.data().comentUser;
+    } else {
+      h1Post.innerHTML = 'Anonymus';
+
+      pPost.innerHTML = doc.data().comentUser;
+    }
+    divPost.appendChild(h1Post);
+    divPost.appendChild(pPost);
+    divPost.appendChild(buttonLike);
+    sectionPost.appendChild(divPost);
+    container.appendChild(sectionPost);
+  });
+}
 export async function createPost(postForm) {
   console.log('createpost antes de collection');
   try {
@@ -75,42 +132,12 @@ export async function createPost(postForm) {
     });
     console.log('documento escrito con id', docRef.id);
     postForm.reset();
+    postForm.innerHTML = '';
+    showPost();
   } catch (err) {
     console.log('error : ', err);
   }
 }
-export async function showPost() {
-  const postAll = query(collection(firestore, 'Post'));
-  const querySnapshot = await getDocs(postAll);
-  const container = document.getElementById('Container');
-
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
-    // const container = document.getElementById('Container');
-    const sectionPost = document.querySelector('#allPost');
-    const divPost = document.createElement('div');
-    divPost.classList.add('divPost');
-    const pPost = document.createElement('p');
-    const h1Post = document.createElement('h1');
-    h1Post.classList.add('h1Post');
-    pPost.classList.add('pPost');
-    const dateAll = doc.data();
-    if (dateAll.hasOwnProperty('name')) {
-      h1Post.innerHTML = doc.data().name;
-      pPost.innerHTML = doc.data().comentUser;
-    } else {
-      h1Post.innerHTML = 'Anonymus';
-
-      pPost.innerHTML = doc.data().comentUser;
-    }
-
-    divPost.appendChild(h1Post);
-    divPost.appendChild(pPost);
-    sectionPost.appendChild(divPost);
-    container.appendChild(sectionPost);
-  });
-}
-
 // export const addPost = (buttonToPost) => {
 //   console.log('add post antes de createpost');
 //   createPost(buttonToPost.name.value);
