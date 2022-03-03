@@ -6,7 +6,7 @@ import { Iniciargoogle } from '../lib/index.js';
 export const home = () => {
   // aqui tu codigo del formulario
   // creacion de logo y reseña
-//  const generalContainer = document.getElementById('generalContainer');
+  //  const generalContainer = document.getElementById('generalContainer');
 
   const divImg = document.createElement('div');
   divImg.classList.add('divImg');

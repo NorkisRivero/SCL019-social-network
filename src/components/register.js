@@ -28,16 +28,19 @@ export const register = () => {
   const inputMail = document.createElement('input');
   const inputPassword = document.createElement('input');
   const inputPassword2 = document.createElement('input');
-  // const inputAge = document.createElement('input');
+  const warnings = document.createElement('div');
   // const inputNationality = document.createElement('input');
   // const inputResident = document.createElement('input');
   //
   // inputName.classList.add('inputName');
   // inputSurname.classList.add('inputSurname');
-  // inputUser.classList.add('inputUser');
+
   inputMail.classList.add('inputMail');
   inputPassword.classList.add('inputPassword');
   inputPassword2.classList.add('inputPassword2');
+  warnings.classList.add('warning');
+  warnings.setAttribute('id', 'warning');
+  warnings.innerText = 'hola mundo';
   // inputAge.classList.add('inputAge');
   // inputNationality.classList.add('inputNationality');
   // inputResident.classList.add('inputResident');
@@ -96,9 +99,11 @@ export const register = () => {
   // div del formulario
   const divFormulario = document.createElement('form'); // ya no es un div sino un form
   divFormulario.classList.add('divFormulario');
+
   // div general
   const divContenedor = document.createElement('div');
   divContenedor.classList.add('signup');
+  divFormulario.appendChild(warnings);
   divFormulario.appendChild(inputMail);
   divFormulario.appendChild(inputPassword);
   divFormulario.appendChild(inputPassword2);

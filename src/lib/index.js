@@ -150,6 +150,7 @@ export async function createPost(postForm) {
 // };
 
 export const eventsRegister = () => {
+  const warnings = document.getElementById('warning');
   const signupForm = document.querySelector('.divFormulario');
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -166,13 +167,15 @@ export const eventsRegister = () => {
           window.location.hash = '#/home';
         }).catch((err) => {
           console.log(err.message);
-
           switch (err.message) {
             case 'Firebase: Error (auth/invalid-email).':
-              alert('el formato del correo es inválido');
+              warnings.innerHTML = 'el formato del correo es inválido';
+              console.log('warning', warnings);
+              // alert('el formato del correo es inválido');
               break;
             case 'Firebase: Error (auth/email-already-in-use).':
-              alert('El correo ingresado ya está registrado');
+              warnings.innerHTML = 'El correo ingresado ya está registrado';
+              // alert('El correo ingresado ya está registrado');
               break;
             default:
           }
@@ -180,7 +183,8 @@ export const eventsRegister = () => {
           // alert(err.message);
         });
     } else {
-      alert('Ambas contraseñas deben ser iguales');
+      warnings.innerHTML = 'Ambas contraseñas deben ser iguales';
+      // alert('Ambas contraseñas deben ser iguales');
     }
     // createUser(email, password);
     //   createUserWithEmailAndPassword(auth, email, password)
