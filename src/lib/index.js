@@ -15,6 +15,8 @@ import {
   orderBy,
   where,
   deleteDoc,
+  arrayUnion,
+  arrayRemove,
   // setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
@@ -65,10 +67,12 @@ const emailCheck = () => {
 };
 // realizar un like
 export function likePost(Post) {
+  updateDoc(Post, { likes: arrayUnion(sessionStorage.getItem('idUserLogin')) });
   return updateDoc(Post, { likesCounter: increment(1) });
 }
 // eliminar un like
 export function unlikePost(Post) {
+  updateDoc(Post, { likes: arrayRemove(sessionStorage.getItem('idUserLogin')) });
   return updateDoc(Post, { likesCounter: increment(-1) });
 }
 
@@ -90,33 +94,27 @@ export async function showPost() {
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
     pPost.classList.add('pPost');
-    const dateAll = documento.data();//
     const buttonLike = document.createElement('button');
     buttonLike.classList.add('like');
     // buttonLike.innerHTML = '🤍';
     // buttonLike.innerHTML = '💗';
     // intento de escuchar y cambiar el clic
     // buttonLike.innerHTML = `🤍 ${doc.data().likesCounter}`;
-    buttonLike.addEventListener('click', async () => {
-      console.log('doc:', documento);
-      const countLike = documento.data().likesCounter + 1;
-      console.log('el contador de like es:', countLike);
+    if (documento.data().likes.includes(sessionStorage.getItem('idUserLogin'))) {
       buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
-      console.log('el id del post es:', documento.id);
-      await likePost(doc(firestore, 'Post', documento.id));// le paso una referencia del objeto por que updatedoc trabaja con referencia no con el objeto
-      console.log('like actualizado');
+    } else {
+      buttonLike.innerHTML = `🤍 ${documento.data().likesCounter}`;
+    }
+    buttonLike.addEventListener('click', async () => {
+      if (documento.data().likes.includes(sessionStorage.getItem('idUserLogin'))) {
+        await unlikePost(doc(firestore, 'Post', documento.id));
+      } else {
+        await likePost(doc(firestore, 'Post', documento.id));
+      }
     });
 
-    buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
-
-    if (dateAll.hasOwnProperty('name')) {
-      h1Post.innerHTML = documento.data().name;
-      pPost.innerHTML = documento.data().comentUser;
-    } else {
-      h1Post.innerHTML = 'Anonymus';
-
-      pPost.innerHTML = documento.data().comentUser;
-    }
+    h1Post.innerHTML = documento.data().name;
+    pPost.innerHTML = documento.data().comentUser;
     divPost.appendChild(h1Post);
     divPost.appendChild(pPost);
     divPost.appendChild(buttonLike);
@@ -165,8 +163,14 @@ export async function editDeletePost() {
       console.log('like actualizado');
     });
     buttonDelete.addEventListener('click', async () => {
-      await deleteDoc(doc(firestore, 'Post', documento.id));
-      console.log('post borrado');
+      const confirmationDelete = confirm('¿Está seguro de eliminar este post?');
+      if (alert(confirmationDelete)) {
+        await deleteDoc(doc(firestore, 'Post', documento.id));
+        console.log('post borrado');
+      } else {
+        window.location.hash = '#/editPost';
+      }
+
       // window.location.hash = '#/editPost';
     });
 
