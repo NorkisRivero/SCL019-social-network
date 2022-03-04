@@ -5,7 +5,7 @@ export const editPost = () => {
   const edit = `
 <header class="headerWall">
 <button class = "logo"><img src="./img/pruebaDeLogo.png"></button>
-<button class = "addComent"><img src="./img/agregar.png"></button>
+
 <button class = "home"><img src="./img/home.png"></button>
 <button class = "perfile"><img src="./img/perfil.png"></button>
 <button class="logout" id="logout"><img src="./img/salir.png"></button>
@@ -29,6 +29,7 @@ export const editPost = () => {
       window.location.hash = '#/logout';
     });
   }
+
   editDeletePost();
   return divHeader;
 };
