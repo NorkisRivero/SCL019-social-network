@@ -1,6 +1,6 @@
 import { logout, showPost } from '../lib/index.js';
 import { post } from './post.js';
-import { editPost } from './editPost.js';
+// import { editPost } from './editPost.js';
 
 export const wall = () => {
   const walls = `
@@ -45,7 +45,6 @@ export const wall = () => {
     buttonEdit.addEventListener('click', () => {
       console.log('estoy haciendo clic en el perfile');
       window.location.hash = '#/editPost';
-      editPost();
     });
   }
   // showPost();
