@@ -163,13 +163,8 @@ export async function editDeletePost() {
       console.log('like actualizado');
     });
     buttonDelete.addEventListener('click', async () => {
-      const confirmationDelete = confirm('¿Está seguro de eliminar este post?');
-      if (alert(confirmationDelete)) {
-        await deleteDoc(doc(firestore, 'Post', documento.id));
-        console.log('post borrado');
-      } else {
-        window.location.hash = '#/editPost';
-      }
+      await deleteDoc(doc(firestore, 'Post', documento.id));
+      console.log('post borrado');
 
       // window.location.hash = '#/editPost';
     });
