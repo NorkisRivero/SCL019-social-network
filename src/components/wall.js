@@ -1,5 +1,6 @@
 import { logout, showPost } from '../lib/index.js';
 import { post } from './post.js';
+import { editPost } from './editPost.js';
 
 export const wall = () => {
   const walls = `
@@ -22,6 +23,7 @@ export const wall = () => {
       logout();
     });
   }
+  showPost();
   const buttonAddComent = divHeader.querySelector('.addComent');
   if (buttonAddComent) {
     buttonAddComent.addEventListener('click', () => {
@@ -32,7 +34,20 @@ export const wall = () => {
       divHeader.appendChild(sectionPostAdd);
     });
   }
-  showPost();
-
+  const buttonHome = divHeader.querySelector('.home');
+  if (buttonHome) {
+    buttonHome.addEventListener('click', () => {
+      showPost();
+    });
+  }
+  const buttonEdit = divHeader.querySelector('.perfile');
+  if (buttonEdit) {
+    buttonEdit.addEventListener('click', () => {
+      console.log('estoy haciendo clic en el perfile');
+      window.location.hash = '#/editPost';
+      editPost();
+    });
+  }
+  // showPost();
   return divHeader;
 };
