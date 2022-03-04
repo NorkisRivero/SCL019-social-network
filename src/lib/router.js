@@ -1,7 +1,10 @@
 import { home } from '../components/home.js';
 import { register } from '../components/register.js';
 import { wall } from '../components/wall.js';
-import { eventsRegister, login } from './index.js';
+import {
+  eventsRegister, login, editDeletePost, logout,
+} from './index.js';
+import { editPost } from '../components/editPost.js';
 // import { sendLinkEMail, login } from './index.js';
 
 // import { wallTemplate } from '../templates/wallpage.js';
@@ -22,8 +25,10 @@ export const router = (hash) => {
   } else if (hash === '#/wall') {
     rootBox.appendChild(wall());
     // createPost();
-  // } else if (hash === '#/restorePassword') {
-  //   rootBox.appendChild(recoverPassword());
-  // }
+  } else if (hash === '#/editPost') {
+    rootBox.appendChild(editPost());
+    editDeletePost();
+  } else if (hash === '#/logout') {
+    logout();
   }
 };

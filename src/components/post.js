@@ -26,6 +26,7 @@ export const post = () => {
       createPost(postForm);
     }
     // createPost(buttonToPost);
+    divPostUser.innerHTML = '';
   });
 
   const buttonClose = divPostUser.querySelector('#close');

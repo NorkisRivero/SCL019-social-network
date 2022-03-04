@@ -13,6 +13,8 @@ import {
   increment,
   doc,
   orderBy,
+  where,
+  deleteDoc,
   // setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
@@ -61,9 +63,13 @@ const emailCheck = () => {
       console.log(error);
     });
 };
-
+// realizar un like
 export function likePost(Post) {
   return updateDoc(Post, { likesCounter: increment(1) });
+}
+// eliminar un like
+export function unlikePost(Post) {
+  return updateDoc(Post, { likesCounter: increment(-1) });
 }
 
 export async function showPost() {
@@ -84,7 +90,7 @@ export async function showPost() {
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
     pPost.classList.add('pPost');
-    const dateAll = documento.data();
+    const dateAll = documento.data();//
     const buttonLike = document.createElement('button');
     buttonLike.classList.add('like');
     // buttonLike.innerHTML = '🤍';
@@ -96,15 +102,13 @@ export async function showPost() {
       const countLike = documento.data().likesCounter + 1;
       console.log('el contador de like es:', countLike);
       buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
-      try {
-        console.log('el id del post es:', documento.id);
-      } catch (error) {
-        console.log('el error es:', error);
-      }
-      await likePost(doc(firestore, 'Post', documento.id));
+      console.log('el id del post es:', documento.id);
+      await likePost(doc(firestore, 'Post', documento.id));// le paso una referencia del objeto por que updatedoc trabaja con referencia no con el objeto
       console.log('like actualizado');
     });
+
     buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
+
     if (dateAll.hasOwnProperty('name')) {
       h1Post.innerHTML = documento.data().name;
       pPost.innerHTML = documento.data().comentUser;
@@ -123,6 +127,63 @@ export async function showPost() {
 //
 //
 
+export async function editDeletePost() {
+  const postAll = query(collection(firestore, 'Post'), where('userId', '==', sessionStorage.getItem('idUserLogin')), orderBy('datepost', 'desc'));
+  // const postAll = query(collection(firestore, 'Post'), orderBy('datepost', 'desc'));
+
+  const querySnapshot = await getDocs(postAll);
+  const container = document.getElementById('Container');
+  const sectionPost = document.querySelector('#allPost');
+  sectionPost.innerHTML = '';
+  console.log('cantidad de datos de la base de datos ', querySnapshot.length);
+  querySnapshot.forEach((documento) => {
+    console.log(documento.id, '=>', documento.data());
+    const divPost = document.createElement('div');
+    divPost.classList.add('divPost');
+    const pPost = document.createElement('p');
+    const h1Post = document.createElement('h1');
+    h1Post.classList.add('h1Post');
+    pPost.classList.add('pPost');
+    const buttonLike = document.createElement('button');
+    const buttonDelete = document.createElement('button');
+    const buttonEdit = document.createElement('button');
+    buttonLike.classList.add('like');
+    buttonEdit.classList.add('edit');
+    buttonDelete.classList.add('delete');
+
+    // buttonLike.innerHTML = '🤍';
+    // buttonLike.innerHTML = '💗';
+    // intento de escuchar y cambiar el clic
+    // buttonLike.innerHTML = `🤍 ${doc.data().likesCounter}`;
+    buttonLike.addEventListener('click', async () => {
+      console.log('doc:', documento);
+      const countLike = documento.data().likesCounter + 1;
+      console.log('el contador de like es:', countLike);
+      buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
+      console.log('el id del post es:', documento.id);
+      await likePost(doc(firestore, 'Post', documento.id));// le paso una referencia del objeto por que updatedoc trabaja con referencia no con el objeto
+      console.log('like actualizado');
+    });
+    buttonDelete.addEventListener('click', async () => {
+      await deleteDoc(doc(firestore, documento));
+      console.log('post borrado');
+    });
+
+    buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
+
+    h1Post.innerHTML = documento.data().name;
+    pPost.innerHTML = documento.data().comentUser;
+    buttonDelete.innerHTML = 'Borrar post';
+    buttonEdit.innerHTML = 'Editar post';
+    divPost.appendChild(h1Post);
+    divPost.appendChild(pPost);
+    divPost.appendChild(buttonLike);
+    divPost.appendChild(buttonDelete);
+    divPost.appendChild(buttonEdit);
+    sectionPost.appendChild(divPost);
+    container.appendChild(sectionPost);
+  });
+}
 //
 export async function createPost(postForm) {
   console.log('createpost antes de collection');
@@ -144,10 +205,6 @@ export async function createPost(postForm) {
     console.log('error : ', err);
   }
 }
-// export const addPost = (buttonToPost) => {
-//   console.log('add post antes de createpost');
-//   createPost(buttonToPost.name.value);
-// };
 
 export const eventsRegister = () => {
   const warnings = document.getElementById('warning');
@@ -186,35 +243,13 @@ export const eventsRegister = () => {
       warnings.innerHTML = 'Ambas contraseñas deben ser iguales';
       // alert('Ambas contraseñas deben ser iguales');
     }
-    // createUser(email, password);
-    //   createUserWithEmailAndPassword(auth, email, password)
-    //     .then((cred) => {
-    //       console.log('User created: ', cred.user);
-    //       emailCheck();
-    //       signupForm.reset();
-
-    //       window.location.hash = '#/home';
-    //     }).catch((err) => {
-    //       console.log(err.message);
-
-    //       switch (err.message) {
-    //         case 'Firebase: Error (auth/invalid-email).':
-    //           alert('el formato del correo es inválido');
-    //           break;
-    //         default:
-    //           break;
-    //       }
-
-    //       // alert(err.message);
-    //     });
-    // });
   });
 };
 export const logout = () => {
   signOut(auth)
     .then(() => {
       console.log('el usuario salió');
-
+      sessionStorage.clear();
       window.location.hash = '#/home';
     })
     .catch((err) => {
@@ -233,7 +268,9 @@ export const login = () => {
         console.log('cred:', cred);
         // console.log('user logged in:', cred.user);
         const user = cred.user;
-        console.log(user);
+        sessionStorage.setItem('idUserLogin', user.uid);
+        console.log('imprimo el user iud del storage', sessionStorage.getItem('idUserLogin'));
+        console.log('imprimo user', user);
         if (user.emailVerified) {
           window.location.hash = '#/wall';
         } else {
@@ -270,6 +307,10 @@ export const checkgoogle = () => {
 
       // The signed-in user info.
       const user = result.user;
+      // console.log('imprimo el user id', user.uid);
+      sessionStorage.setItem('idUserLogin', user.uid);
+      console.log('imprimo el user iud del storage', sessionStorage.getItem('idUserLogin'));
+
       console.log(token, user);
     }).catch((error) => {
       // Handle Errors here.
