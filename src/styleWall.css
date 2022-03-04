@@ -34,13 +34,6 @@ img {
     border-radius: 110%;
     background-color: #ac0a0a;
 }
-@media (min-width:1024px){
-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 90%;
-}
-}
 .divPost{
 
     background-color: rgb(127, 208, 255);
@@ -48,4 +41,11 @@ img {
     margin: 25px;
     border: #1D65A6;
   display: grid;
+}
+@media (min-width:1024px){
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 90%;
+}
 }

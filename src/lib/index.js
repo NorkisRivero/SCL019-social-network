@@ -165,8 +165,9 @@ export async function editDeletePost() {
       console.log('like actualizado');
     });
     buttonDelete.addEventListener('click', async () => {
-      await deleteDoc(doc(firestore, documento));
+      await deleteDoc(doc(firestore, 'Post', documento.id));
       console.log('post borrado');
+      // window.location.hash = '#/editPost';
     });
 
     buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
@@ -182,6 +183,7 @@ export async function editDeletePost() {
     divPost.appendChild(buttonEdit);
     sectionPost.appendChild(divPost);
     container.appendChild(sectionPost);
+    window.location.hash = '#/editPost';
   });
 }
 //
