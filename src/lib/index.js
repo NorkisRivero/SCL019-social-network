@@ -146,42 +146,26 @@ export async function editDeletePost() {
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
     pPost.classList.add('pPost');
-    const buttonLike = document.createElement('button');
     const buttonDelete = document.createElement('button');
     const buttonEdit = document.createElement('button');
-    buttonLike.classList.add('like');
     buttonEdit.classList.add('edit');
     buttonDelete.classList.add('delete');
-
-    // buttonLike.innerHTML = '🤍';
-    // buttonLike.innerHTML = '💗';
-    // intento de escuchar y cambiar el clic
-    // buttonLike.innerHTML = `🤍 ${doc.data().likesCounter}`;
-    buttonLike.addEventListener('click', async () => {
-      console.log('doc:', documento);
-      const countLike = documento.data().likesCounter + 1;
-      console.log('el contador de like es:', countLike);
-      buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
-      console.log('el id del post es:', documento.id);
-      await likePost(doc(firestore, 'Post', documento.id));// le paso una referencia del objeto por que updatedoc trabaja con referencia no con el objeto
-      console.log('like actualizado');
-    });
     buttonDelete.addEventListener('click', async () => {
-      await deleteDoc(doc(firestore, 'Post', documento.id));
-      console.log('post borrado');
-
-      // window.location.hash = '#/editPost';
+      const isBoss = confirm("¿Desea borrar este post?");
+      if (isBoss) {
+        await deleteDoc(doc(firestore, 'Post', documento.id));
+        console.log('post borrado');
+        editDeletePost();
+      } else {
+        editDeletePost();
+      }
     });
-
-    buttonLike.innerHTML = `💗 ${documento.data().likesCounter}`;
-
     h1Post.innerHTML = documento.data().name;
     pPost.innerHTML = documento.data().comentUser;
     buttonDelete.innerHTML = 'Borrar post';
     buttonEdit.innerHTML = 'Editar post';
     divPost.appendChild(h1Post);
     divPost.appendChild(pPost);
-    divPost.appendChild(buttonLike);
     divPost.appendChild(buttonDelete);
     divPost.appendChild(buttonEdit);
     sectionPost.appendChild(divPost);
