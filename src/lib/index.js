@@ -160,6 +160,16 @@ export async function editDeletePost() {
         editDeletePost();
       }
     });
+    buttonEdit.addEventListener('click', async () => {
+      const isBoss = confirm("¿Desea borrar este post?");
+      if (isBoss) {
+        await deleteDoc(doc(firestore, 'Post', documento.id));
+        console.log('post borrado');
+        editDeletePost();
+      } else {
+        editDeletePost();
+      }
+    });
     h1Post.innerHTML = documento.data().name;
     pPost.innerHTML = documento.data().comentUser;
     buttonDelete.innerHTML = 'Borrar post';
@@ -188,7 +198,6 @@ export async function createPost(postForm) {
     });
     console.log('documento escrito con id', docRef.id);
     postForm.reset();
-    // postForm.innerHTML = '';
     showPost();
   } catch (err) {
     console.log('error : ', err);

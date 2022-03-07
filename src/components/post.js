@@ -13,7 +13,6 @@ export const post = () => {
   divPostUser.innerHTML = postUser;
   const buttonToPost = divPostUser.querySelector('#toPost');
   console.log('estoy en post');
-
   buttonToPost.addEventListener('click', (event) => {
     event.preventDefault();
     console.log('hizo clic en el boton publicar:');
