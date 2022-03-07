@@ -169,8 +169,9 @@ export async function editDeletePost() {
       const inputComent = document.createElement('input');
       inputComent.setAttribute('type', 'text');
       inputComent.setAttribute('name', 'inputC');
+      inputComent.setAttribute('value', `${documento.data().comentUser}`);// ${} simbología para mostrar el valor de elemento
+      console.log(` el valor de la variable es: ${documento.data().comentUser}`);
       const submitButton = document.createElement('button');
-      // submitButton.setAttribute('type', 'submit');
       submitButton.innerHTML = 'Guardar edicion';
       form.appendChild(inputComent);
       form.appendChild(submitButton);
