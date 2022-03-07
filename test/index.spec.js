@@ -1,8 +1,8 @@
 // importamos la funcion que vamos a testear
-import { home } from '../src/components/home.js';
+import { router } from '../src/lib/router.js';
 
-describe('myFunction', () => {
+describe(router, () => {
   it('debería ser una función', () => {
-    expect(typeof home()).toBe('function');
+    expect(typeof router()).toBe('function');
   });
 });
