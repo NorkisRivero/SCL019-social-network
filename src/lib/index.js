@@ -17,7 +17,7 @@ import {
   deleteDoc,
   arrayUnion,
   arrayRemove,
-  // setDoc,
+  setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
 import {
@@ -148,11 +148,14 @@ export async function editDeletePost() {
     pPost.classList.add('pPost');
     const buttonDelete = document.createElement('button');
     const buttonEdit = document.createElement('button');
+    const buttonClose = document.createElement('button');
+    buttonClose.classList.add('close');
+    buttonClose.innerHTML = 'Cerrar';
     buttonEdit.classList.add('edit');
     buttonDelete.classList.add('delete');
     buttonDelete.addEventListener('click', async () => {
-      const isBoss = confirm("¿Desea borrar este post?");
-      if (isBoss) {
+      const closeConfirm = confirm('¿Desea borrar este post?');
+      if (closeConfirm) {
         await deleteDoc(doc(firestore, 'Post', documento.id));
         console.log('post borrado');
         editDeletePost();
@@ -160,15 +163,36 @@ export async function editDeletePost() {
         editDeletePost();
       }
     });
-    buttonEdit.addEventListener('click', async () => {
-      const isBoss = confirm("¿Desea borrar este post?");
-      if (isBoss) {
-        await deleteDoc(doc(firestore, 'Post', documento.id));
-        console.log('post borrado');
-        editDeletePost();
-      } else {
-        editDeletePost();
-      }
+    buttonEdit.addEventListener('click', () => {
+      const form = document.createElement('form');
+      form.setAttribute('id', 'idForm');
+      const inputComent = document.createElement('input');
+      inputComent.setAttribute('type', 'text');
+      inputComent.setAttribute('name', 'inputC');
+      const submitButton = document.createElement('button');
+      // submitButton.setAttribute('type', 'submit');
+      submitButton.innerHTML = 'Guardar edicion';
+      form.appendChild(inputComent);
+      form.appendChild(submitButton);
+      form.appendChild(buttonClose);
+      divPost.appendChild(form);
+      // form.appendChild(submitButton);
+      submitButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const formId = document.getElementById('idForm');
+        const coment = formId.inputC.value;
+        console.log('valor input coment', coment);
+        await updateDoc(doc(firestore, 'Post', documento.id), {
+          comentUser: coment,
+        });
+        console.log('post editado');
+        window.location.hash = '#/wall';
+      });
+    });
+    buttonClose.addEventListener('click', () => {
+      const formId = document.getElementById('idForm');
+      formId.innerHTML = '';
+      window.location.hash = '#/wall';
     });
     h1Post.innerHTML = documento.data().name;
     pPost.innerHTML = documento.data().comentUser;
