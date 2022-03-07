@@ -107,9 +107,13 @@ export async function showPost() {
     }
     buttonLike.addEventListener('click', async () => {
       if (documento.data().likes.includes(sessionStorage.getItem('idUserLogin'))) {
+        buttonLike.innerHTML = `🤍 ${documento.data().likesCounter - 1}`;
         await unlikePost(doc(firestore, 'Post', documento.id));
+        showPost();
       } else {
         await likePost(doc(firestore, 'Post', documento.id));
+        buttonLike.innerHTML = `💗 ${documento.data().likesCounter + 1}`;
+        showPost();
       }
     });
 
@@ -200,7 +204,7 @@ export async function createPost(postForm) {
     });
     console.log('documento escrito con id', docRef.id);
     postForm.reset();
-    postForm.innerHTML = '';
+    // postForm.innerHTML = '';
     showPost();
   } catch (err) {
     console.log('error : ', err);
