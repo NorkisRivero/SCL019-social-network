@@ -90,7 +90,7 @@ export async function showPost() {
     // const sectionPost = document.querySelector('#allPost');
     const divPost = document.createElement('div');
     divPost.classList.add('divPost');
-    const pPost = document.createElement('p');
+    const pPost = document.createElement('h1');
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
     pPost.classList.add('pPost');
