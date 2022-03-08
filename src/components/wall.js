@@ -5,7 +5,7 @@ import { post } from './post.js';
 export const wall = () => {
   const walls = `
 <header class="headerWall">
-<button class = "logo"><img src="./img/pruebaDeLogo.png"></button>
+<div class = "logo"><img src="./img/pruebaDeLogo.png" class= "imgLogo"></div>
 <button class = "addComent"><img src="./img/agregar.png"></button>
 <button class = "home"><img src="./img/home.png"></button>
 <button class = "perfile"><img src="./img/perfil.png"></button>
