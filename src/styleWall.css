@@ -35,14 +35,16 @@ img {
     background-color: #ac0a0a;
 }
 .divPost{
-    background-color: rgb(127, 208, 255);
+    background-color: rgb(46, 143, 199);
     padding: 25px;
     margin: 25px;
-    box-shadow:0.5em 0.5em rgba(83, 83, 92, 0.3);
+    /* box-shadow:0.5em 0.5em rgba(83, 83, 92, 0.3); */
     border: #1D65A6;
     border-radius: 20px;
     display: grid;
     border-style: none; border-width: 1px;
+    box-shadow:  20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
 
 }
 
