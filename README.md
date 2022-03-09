@@ -1,3 +1,85 @@
+# Red Social - MigrarUnidos
+
+MigrarUnidos es una red social pensada para migrantes de Argentina, Cuba y Venezuela radicados en Chile, y quiénes deseen venir a Chile de manera legal. El objetivo es que se pueda postear información oficial de extranjería, respecto a visas temporales, defintiva, de turismo, experiencias de cada migrante, entre otros. Para ello, se realizó entrevistas a extranjeros dentro y fuera de Chile para determinar la necesidad de crear una red social para tal fin, y de esa forma crear las historias de usuarios.
+
+
+Para comenzar a desarrollar nuestro proyecto, planteamos esta temática, debido a que las integrantes del equipo somos migrantes radicadas en Chile, y de acuerdo a nuestras experiencias y la de nuestros familiares y amigos, se pudo notar que existe la necesidad de tener un espacio virtual al cual acudir para aclarar dudas, dar recomendaciones, obtener y ofrecer ayuda con los temas de migración de nuestras nacionalidades. El problema que resuelve el producto, es la desinformación que existe en cuánto al proceso migratorio que debe realizarse para venir a vivir a Chile, a su vez que ayuda a quiénes ya viven aquí. 
+
+Hicimos entrevistas a varias personas, para determinar las Historias de Usuarios, en dichas entrevistas los resultados que arrojaron en términos generales
+
+
+# Historias de Usuarios
+
+## HU1
+Como Pedro Pérez, quiero entrar a la página de bienvenida para poder registrarme y/o loguearme.
+
+## Criterios de aceptación:
+
+- Quiero ver el nombre y logo de la página.
+- Quiero ver una reseña sobre la página.
+- Quiero ver la opción para registrarme.
+- Quiero iniciar sesión.
+
+## Definición de terminado:
+
+- Estructura básica de la página: nombre, logo, barra y reseña.
+- Input para Registro, Olvido de contraseña e Iniciar Sesión.
+
+
+## HU2
+Como Pedro Pérez, quiero registrarme en la Red social para poder acceder a ella.
+
+## Criterios de aceptación:
+- Poder ingresar mis datos para registrarme: correo electrónico y contraseña.
+- Enviar los datos para completar el registro.
+
+Definción de terminado:
+- Crear input para cada uno de los datos solicitados.
+- Al hacer clic en Registrarme, enviar un correo para verficar que el email sea válido.
+- Una vez verificado el correo, poder iniciar sesión.
+
+HU3:
+Como Pedro Pérez, quiero loguearme en la página y hacer publicaciones.
+
+Criterios de aceptación:
+
+- Ingresar con correo electrónico y contraseña o con Google.
+- Si los datos son inválidos, poder corregirlos e intentar nuevamente.
+
+Definición de terminado:
+
+- Validar que los campos no estén vacíos.
+- Validar si los datos están en nuestra base de datos.
+- Si los datos son válidos, permitir el ingreso a la red social.
+- Si los datos no son correctos, que aparezca un mensaje de error, para que el usuario pueda corregirlos.
+
+HU4:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Creando una Red Social
 
 ## Índice
