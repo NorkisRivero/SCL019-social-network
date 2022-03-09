@@ -103,8 +103,6 @@ img {
     width: 9em;
     height: 9em;
 }
-<<<<<<< HEAD
-=======
 .logout .tooltiptext3 {
     visibility: hidden;
     width: 120px;
@@ -147,7 +145,6 @@ section{
     color: white;
 }
 
->>>>>>> 6ca5facd76e379e271c7dae4869a79ea29141756
 @media (min-width:1024px){
 /* img {
     width: 8em;
