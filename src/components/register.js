@@ -40,7 +40,7 @@ export const register = () => {
   inputPassword2.classList.add('inputPassword2');
   warnings.classList.add('warning');
   warnings.setAttribute('id', 'warning');
-  warnings.innerText = 'hola mundo';
+  // warnings.innerText = 'hola mundo';
   // inputAge.classList.add('inputAge');
   // inputNationality.classList.add('inputNationality');
   // inputResident.classList.add('inputResident');

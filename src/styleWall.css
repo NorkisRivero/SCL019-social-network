@@ -1,55 +1,163 @@
-
-
 .headerWall{
     background-size: cover;
-
    justify-content: space-around;
     width: -webkit-fill-available;
-    background-color: #1D65A6
-    ;
+    background-color: #1d66a6ce;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 1em;
+}
+.divHeader{
+    display: grid;
+    grid-area: 25%;
 }
 img {
-    width: 90px;
-    height: 90px;
-    border-radius: 90%;
+    width: 5.6em;
+    height: 5.6em;
+    border-radius: 90%; 
 }
 .logo{
     border-radius: 90%;
     background-color: #1D65A6;
+    width: 9em;
+    height: 9em;
+}
+.imgLogoPost{
+    width: 9em;
+    height: 9em;
 }
 .addComent{
     border-radius: 90%;
     background-color: #1D65A6;
+    width: 9em;
+    height: 9em;
 }
+.addComent .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+.addComent:hover .tooltiptext {
+    visibility: visible;
+    cursor: pointer;
+  }
 
 .home{
     border-radius: 90%;
     background-color: #1D65A6;
+    width: 9em;
+    height: 9em;
 }
+.home .tooltiptext1 {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  .home:hover .tooltiptext1 {
+    visibility: visible;
+    cursor: pointer;
+  }
 .perfile{
     border-radius: 95%;
     background-color: #1D65A6;
+    width: 9em;
+    height: 9em;
 }
+.perfile .tooltiptext2 {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  .perfile:hover .tooltiptext2 {
+    visibility: visible;
+    cursor: pointer;
+  }
 .logout{
     border-radius: 110%;
     background-color: #ac0a0a;
+    width: 9em;
+    height: 9em;
 }
-.divPost{
-    background-color: rgb(127, 208, 255);
+.logout .tooltiptext3 {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    right: 13%;
+  }
+  .logout:hover .tooltiptext3 {
+    visibility: visible;
+    cursor: pointer;
+  }
+.divPost{  
+    background-color: rgb(255, 255, 255);
     padding: 25px;
-    margin: 25px;
-    box-shadow:0.5em 0.5em rgba(83, 83, 92, 0.3);
-    border: #1D65A6;
+    margin: 2em;
+    margin-left: 6em;
+    margin-right:6em ;
+    box-shadow:0.5em 0.5em rgba(228, 72, 10, 0.1);
     border-radius: 20px;
     display: grid;
     border-style: none; border-width: 1px;
+    gap: 1.5em;
 
+}
+section{
+    /* background-color: #FADBD8 */
+    background-image: linear-gradient(rgb(231, 142, 142, 0.6), rgb(42, 24, 202, 0.6), rgb(216, 123, 16, 0.6));
+    /* opacity: 0.5; */
+}
+.like{
+    background-color: #1977ca79 ;
+    /* opacity: 0.5; */
+    color: white;
 }
 
 @media (min-width:1024px){
-img {
-    width: 200px;
-    height: 200px;
+/* img {
+    width: 8em;
+    height: 8em;
     border-radius: 90%;
+} */
+.imgLogoPost{
+    width: 8em;
+    height: 8em;
+    border-radius: 90%;
+}
+.logo{
+    width: 8em;
+    height: 8em;
 }
 }
