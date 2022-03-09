@@ -75,7 +75,7 @@ export function unlikePost(Post) {
   updateDoc(Post, { likes: arrayRemove(sessionStorage.getItem('idUserLogin')) });
   return updateDoc(Post, { likesCounter: increment(-1) });
 }
-
+// Funcion que muestra todos los post
 export async function showPost() {
   const postAll = query(collection(firestore, 'Post'), orderBy('datepost', 'desc'));
   // const postAll = firestore.collection('Post');
