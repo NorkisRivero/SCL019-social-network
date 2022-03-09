@@ -75,7 +75,6 @@ export const home = () => {
   // containerForm.appendChild(a);
   containerForm.appendChild(aRegister);
   containerForm.appendChild(buttonGoogle);
-
   generalContainer.appendChild(headerPart);
   generalContainer.appendChild(asideLogo);
   generalContainer.appendChild(containerForm);

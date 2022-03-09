@@ -138,7 +138,7 @@ export async function editDeletePost() {
 
   const querySnapshot = await getDocs(postAll);
   const container = document.getElementById('Container');
-  const sectionPost = document.querySelector('#allPost');
+  const sectionPost = document.querySelector('#allPost1');
   sectionPost.innerHTML = '';
   console.log('cantidad de datos de la base de datos ', querySnapshot.length);
   querySnapshot.forEach((documento) => {
