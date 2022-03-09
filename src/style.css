@@ -107,7 +107,14 @@ input{
    font-size: 0.8em;
    padding-top: 6%;
 }
-
+.warning{
+   color: rgb(255, 255, 255);
+   text-align: center;
+   font-style:initial;
+   text-shadow: 0 0 5px #030303, 0 0 5px #f50404;
+   text-decoration: overline underline;
+   text-decoration-color: red;
+}
 
 @media (min-width:1024px){
 
