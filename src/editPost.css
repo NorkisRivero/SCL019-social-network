@@ -11,11 +11,20 @@ div.divHeader1{
     display: grid;
     grid-area: 25%;
 }
+img {
+    width: 5.6em;
+    height: 5.6em;
+    border-radius: 90%; 
+}
 .logo1{
     border-radius: 90%;
     background-color: #1D65A6;
     width: 9em;
     height: 9em
+}
+.imgLogo{
+    width: 9em;
+    height: 9em;
 }
 .home1{
     border-radius: 90%;
@@ -23,11 +32,41 @@ div.divHeader1{
     width: 9em;
     height: 9em;
 }
+.home1 .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  .home1 .tooltiptext:hover {
+    visibility: visible;
+    cursor: pointer;
+  }
 .perfile1{
-    border-radius: 95%;
+    border-radius: 90%;
     background-color: #1D65A6;
     width: 9em;
     height: 9em;
+}
+.perfile1 .tooltiptext1{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
 }
 .logout1{
     border-radius: 110%;
@@ -35,10 +74,18 @@ div.divHeader1{
     width: 9em;
     height: 9em;
 }
-img {
-    width: 5.6em;
-    height: 5.6em;
-    border-radius: 90%; 
+.logo1 .tooltiptext2{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
 }
 .divPost1{  
     background-color: rgb(255, 255, 255);
@@ -54,9 +101,13 @@ img {
 
 }
 @media (min-width:1024px){
-    img {
+    .imgLogo{
         width: 8em;
         height: 8em;
         border-radius: 90%;
+    }
+    .logo1{
+        width: 8em;
+        height: 8em;
     }
     }
