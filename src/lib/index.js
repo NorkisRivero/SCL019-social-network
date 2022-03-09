@@ -17,7 +17,7 @@ import {
   deleteDoc,
   arrayUnion,
   arrayRemove,
-  setDoc,
+  // setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
 import {
@@ -90,10 +90,12 @@ export async function showPost() {
     // const sectionPost = document.querySelector('#allPost');
     const divPost = document.createElement('div');
     divPost.classList.add('divPost');
-    const pPost = document.createElement('p');
+    const pPost = document.createElement('h1');
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
     pPost.classList.add('pPost');
+    const datepost = document.createElement('h2');
+    datepost.classList.add('datepost');
     const buttonLike = document.createElement('button');
     buttonLike.classList.add('like');
     // buttonLike.innerHTML = '🤍';
@@ -116,8 +118,9 @@ export async function showPost() {
         showPost();
       }
     });
-
+    console.log('el date es: ', Timestamp.fromDate(new Date()));
     h1Post.innerHTML = documento.data().name;
+    datepost.innerHTML = Timestamp.fromDate(new Date());
     pPost.innerHTML = documento.data().comentUser;
     divPost.appendChild(h1Post);
     divPost.appendChild(pPost);
@@ -212,9 +215,15 @@ export async function editDeletePost() {
 export async function createPost(postForm) {
   console.log('createpost antes de collection');
   try {
+    let nameUser;
+    if (auth.currentUser.displayName === null) {
+      nameUser = auth.currentUser.email;
+    } else {
+      nameUser = auth.currentUser.displayName;
+    }
     const docRef = await addDoc(collection(firestore, 'Post'), {
       userId: auth.currentUser.uid,
-      name: auth.currentUser.displayName,
+      name: nameUser,
       email: auth.currentUser.email,
       comentUser: postForm.coment.value,
       datepost: Timestamp.fromDate(new Date()),
@@ -243,7 +252,7 @@ export const eventsRegister = () => {
           console.log('User created: ', cred.user);
           emailCheck();
           signupForm.reset();
-
+          localStorage.setItem('nameUserRegister', email);
           window.location.hash = '#/home';
         }).catch((err) => {
           console.log(err.message);
@@ -310,12 +319,12 @@ export const login = () => {
           case 'Firebase: Error (auth/wrong-password).':
             alert('la contraseña ingresada es incorrecta');
             break;
-          // case 'Firebase: Error (auth/internal-error).':
-          //   alert('El ingreso de contraseña es obligatorio.');
-          //   break;
-          // case 'Firebase: Error (auth/invalid-email).':
-          //   alert('Debe ingresar un correo validado');
-          //   break;
+          case 'Firebase: Error (auth/internal-error).':
+            alert('El ingreso de contraseña es obligatorio.');
+            break;
+          case 'Firebase: Error (auth/invalid-email).':
+            alert('Debe ingresar un correo validado');
+            break;
           default:
         }
       });
