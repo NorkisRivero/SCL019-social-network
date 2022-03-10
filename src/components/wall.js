@@ -1,4 +1,6 @@
-import { logout } from '../lib/index.js';
+import { logout, showPost } from '../lib/index.js';
+import { post } from './post.js';
+// import { editPost } from './editPost.js';
 
 export const wall = () => {
   const walls = `
@@ -20,6 +22,30 @@ export const wall = () => {
       logout();
     });
   }
-
+  showPost();
+  const buttonAddComent = divHeader.querySelector('.addComent');
+  if (buttonAddComent) {
+    buttonAddComent.addEventListener('click', () => {
+      const postAdd = post();
+      const sectionPostAdd = document.createElement('section');
+      sectionPostAdd.classList.add('sectionPostAdd');
+      sectionPostAdd.appendChild(postAdd);
+      divHeader.appendChild(sectionPostAdd);
+    });
+  }
+  const buttonHome = divHeader.querySelector('.home');
+  if (buttonHome) {
+    buttonHome.addEventListener('click', () => {
+      showPost();
+    });
+  }
+  const buttonEdit = divHeader.querySelector('.perfile');
+  if (buttonEdit) {
+    buttonEdit.addEventListener('click', () => {
+      console.log('estoy haciendo clic en el perfile');
+      window.location.hash = '#/editPost';
+    });
+  }
+  // showPost();
   return divHeader;
 };

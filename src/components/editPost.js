@@ -17,13 +17,13 @@ export const editPost = () => {
   const divHeader = document.createElement('div');
   divHeader.classList.add('divHeader1');
   divHeader.innerHTML = edit;
-  const buttonHome = divHeader.querySelector('.home');
+  const buttonHome = divHeader.querySelector('.home1');
   if (buttonHome) {
     buttonHome.addEventListener('click', () => {
       window.location.hash = '#/wall';
     });
   }
-  const buttonLogout = divHeader.querySelector('.logout');
+  const buttonLogout = divHeader.querySelector('.logout1');
   if (buttonLogout) {
     buttonLogout.addEventListener('click', (e) => {
       e.preventDefault();

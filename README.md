@@ -1,4 +1,4 @@
-# Red Social - MigrarUnidos
+## Red Social - MigrarUnidos
 
 MigrarUnidos es una red social pensada para migrantes de Argentina, Cuba y Venezuela radicados en Chile, y quiénes deseen venir a Chile de manera legal. El objetivo es que se pueda postear información oficial de extranjería, respecto a visas temporales, defintiva, de turismo, experiencias de cada migrante, entre otros. Para ello, se realizó entrevistas a extranjeros dentro y fuera de Chile para determinar la necesidad de crear una red social para tal fin, y de esa forma crear las historias de usuarios.
 
@@ -10,26 +10,26 @@ Hicimos entrevistas a varias personas, para determinar las Historias de Usuarios
 
 # Historias de Usuarios
 
-## HU1
+# HU1
 Como Pedro Pérez, quiero entrar a la página de bienvenida para poder registrarme y/o loguearme.
 
-## Criterios de aceptación:
+# Criterios de aceptación:
 
 - Quiero ver el nombre y logo de la página.
 - Quiero ver una reseña sobre la página.
 - Quiero ver la opción para registrarme.
 - Quiero iniciar sesión.
 
-## Definición de terminado:
+# Definición de terminado:
 
 - Estructura básica de la página: nombre, logo, barra y reseña.
 - Input para Registro, Olvido de contraseña e Iniciar Sesión.
 
 
-## HU2
+# HU2
 Como Pedro Pérez, quiero registrarme en la Red social para poder acceder a ella.
 
-## Criterios de aceptación:
+# Criterios de aceptación:
 - Poder ingresar mis datos para registrarme: correo electrónico y contraseña.
 - Enviar los datos para completar el registro.
 
@@ -38,8 +38,8 @@ Definción de terminado:
 - Al hacer clic en Registrarme, enviar un correo para verficar que el email sea válido.
 - Una vez verificado el correo, poder iniciar sesión.
 
-HU3:
-Como Pedro Pérez, quiero loguearme en la página y hacer publicaciones.
+# HU3:
+Como Pedro Pérez, quiero loguearme en la página para ver el muro.
 
 Criterios de aceptación:
 
@@ -53,7 +53,39 @@ Definición de terminado:
 - Si los datos son válidos, permitir el ingreso a la red social.
 - Si los datos no son correctos, que aparezca un mensaje de error, para que el usuario pueda corregirlos.
 
-HU4:
+# HU4:
+Como Pedro Pérez, quiero estar en el muro, para crear publicaciones y dar o quitar likes.
+
+Criterios de aceptación:
+
+- Quiero ver las publicaciones de otros usuarios.
+- Quiero poder crear una publicación.
+- Quiero dar o poder quitar like.
+
+Definición de terminado:
+
+- Que cada publicación tenga la identificación del usuario.
+- Que al dar clic en el botón crear publicación, que salga un input y un botón submit, para crearla.
+- Que al dar clic en el botón de like que se guarde en la base de datos.
+
+
+# HU5:
+Como Pedro Pérez, quiero ver todas mis publicaciones, para poder editarlas y/o eliminarlas.
+
+Criterios de aceptación:
+
+- 
+
+
+
+
+
+# Prototipos
+
+Figma- mobilfirst:
+
+![Prototipo-figma](src/img/prototipoMobileFirst.png)
+
 
 
 
