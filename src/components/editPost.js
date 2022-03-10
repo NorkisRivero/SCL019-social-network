@@ -3,11 +3,13 @@ import { editDeletePost } from '../lib/index.js';
 
 export const editPost = () => {
   const edit = `
-<header class="headerWall">
-<div class = "logo"><img src="./img/pruebaDeLogo.png" class= "imgLogo"></div>
-<button class="home"><img src="./img/home.png"><span class="tooltiptext1">Ver todos los post</span></button>
-<button class="perfile"><img src="./img/perfil.png"><span class="tooltiptext2">Ver mis post</span></button>
-<button class="logout" id="logout"><img src="./img/salir.png"><span class="tooltiptext3">Salir de la sesion</span>
+
+<header class="headerWall1">
+<div class = "logo"><img src="./img/pruebaDeLogo.png" class= "imgLogoPost"></div>
+<button class = "home1"><img src="./img/home.png"><span class="tooltiptextP1"> <br>Todos los post</span></button>
+<button class = "perfile1"><img src="./img/perfil.png"><span class="tooltiptextP2"> <br>Mis post</span></button>
+<button class="logout1" id="logout"><img src="./img/salir.png"><span class="tooltiptextP3"> <br>Salir de la sesión</span></button>
+</header>
 
 <section id = "allPost1" class = "allPost1">
 </section>
