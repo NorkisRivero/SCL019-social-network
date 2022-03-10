@@ -1,4 +1,23 @@
+/* .divHeader1{
+    display: grid;
+    width: 100%;
+    height: fit-content;
+}
 .headerWall1{
+    background-size: cover;
+   /* justify-content: space-around; */
+    /* width: -webkit-fill-available;
+    background-color: #1d66a6ce;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1em;
+    /* grid-template-areas:
+    "divHeader"
+    "allPost"; 
+    width: 100%;
+    height: fit-content;
+} */
+/* .headerWall1{
     background-size: cover;
    justify-content: space-around;
     width: -webkit-fill-available;
@@ -6,16 +25,19 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 1em;
-}
-div.divHeader1{
+    padding-top: 2em;
+    height: fit-content;
+    padding: 32px, 0, 0;
+}*/
+.divHeader1{
+    /* display: grid;
+    grid-area: 25%;
+    height: 100%;
+    padding: 32px, 0, 0; */
     display: grid;
     grid-area: 25%;
 }
-img {
-    width: 5.6em;
-    height: 5.6em;
-    border-radius: 90%; 
-}
+
 .logo1{
     border-radius: 90%;
     background-color: #1D65A6;
@@ -27,7 +49,6 @@ img {
     height: 9em;
 }
 .home1{
-    border-radius: 90%;
     background-color: #1D65A6;
     width: 9em;
     height: 9em;
@@ -50,7 +71,6 @@ img {
     cursor: pointer;
   }
 .perfile1{
-    border-radius: 90%;
     background-color: #1D65A6;
     width: 9em;
     height: 9em;
@@ -69,7 +89,6 @@ img {
     z-index: 1;
 }
 .logout1{
-    border-radius: 110%;
     background-color: #ac0a0a;
     width: 9em;
     height: 9em;
@@ -98,10 +117,19 @@ img {
     display: grid;
     border-style: none; border-width: 1px;
     gap: 1.5em;
+}
 
+.edit, .delete{
+    background-color: #1977ca79 ;
+    /* opacity: 0.5; */
+    color: white;
+}
+.allPost1{
+    height: 100%;
 }
 @media (min-width:1024px){
-    .imgLogo{
+
+    .imgLogo1{
         width: 8em;
         height: 8em;
         border-radius: 90%;
@@ -109,5 +137,67 @@ img {
     .logo{
         width: 8em;
         height: 8em;
+        border-radius: 90%;
     }
+      .home1{
+        border-radius: 90%;
+      }
+      .home1 .tooltiptextP1 {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+      
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+      }
+      .home1:hover .tooltiptextP1 {
+        visibility: visible;
+        cursor: pointer;
+      }
+
+      .perfile1{
+        border-radius: 95%;
+      }
+      .perfile1 .tooltiptextP2 {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+      
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+      }
+      .perfile1:hover .tooltiptextP2 {
+        visibility: visible;
+        cursor: pointer;
+      }
+    .logout1{
+        border-radius: 90%;
+    }
+    .logout1 .tooltiptextP3 {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+      
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        right: 13%;
+      }
+      .logout1:hover .tooltiptextP3 {
+        visibility: visible;
+        cursor: pointer;
     }
