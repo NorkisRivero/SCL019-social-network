@@ -11,19 +11,19 @@ export const editPost = () => {
 <button class="logout1" id="logout"><img src="./img/salir.png"><span class="tooltiptextP3"> <br>Salir de la sesión</span></button>
 </header>
 
-<section id = "allPost" class = "allPost">
+<section id = "allPost1" class = "allPost1">
 </section>
 `;
   const divHeader = document.createElement('div');
   divHeader.classList.add('divHeader');
   divHeader.innerHTML = edit;
-  const buttonHome = divHeader.querySelector('.home');
+  const buttonHome = divHeader.querySelector('.home1');
   if (buttonHome) {
     buttonHome.addEventListener('click', () => {
       window.location.hash = '#/wall';
     });
   }
-  const buttonLogout = divHeader.querySelector('.logout');
+  const buttonLogout = divHeader.querySelector('.logout1');
   if (buttonLogout) {
     buttonLogout.addEventListener('click', (e) => {
       e.preventDefault();
