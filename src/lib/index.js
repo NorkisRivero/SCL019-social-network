@@ -136,12 +136,13 @@ export async function editDeletePost() {
   const querySnapshot = await getDocs(postAll);
   const container = document.getElementById('Container');
   const sectionPost = document.querySelector('#allPost1');
+  // const sectionPost = document.getElementById('.allPost1');
   sectionPost.innerHTML = '';
   console.log('cantidad de datos de la base de datos ', querySnapshot.length);
   querySnapshot.forEach((documento) => {
     console.log(documento.id, '=>', documento.data());
     const divPost = document.createElement('div');
-    divPost.classList.add('divPost');
+    divPost.classList.add('divPost1');
     const pPost = document.createElement('p');
     const h1Post = document.createElement('h1');
     h1Post.classList.add('h1Post');
