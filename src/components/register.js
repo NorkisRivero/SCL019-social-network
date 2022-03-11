@@ -50,7 +50,7 @@ export const register = () => {
   // inputUser.setAttribute('placeholder', 'Usuario');
   inputMail.setAttribute('placeholder', 'Email');
   inputMail.setAttribute('name', 'email');
-  inputPassword.setAttribute('placeholder', 'Crear Contraseña');
+  inputPassword.setAttribute('placeholder', 'Crear contraseña de 8 dígitos');
   inputPassword.setAttribute('name', 'password');
   inputPassword.setAttribute('type', 'password');
 
