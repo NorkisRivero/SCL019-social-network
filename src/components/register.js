@@ -10,8 +10,8 @@ export const register = () => {
   const review = document.createElement('h1');
   review.classList.add('review');
   review.innerText = 'Red informativa para migrantes y futuros migrantes en Chile';
-  // insertar en el articulo img y reseña
   const asideLogo = document.createElement('aside');
+  // creacion de un aside que contiene el logo y la reseña
   divImg.appendChild(imgLogo);
   asideLogo.appendChild(divImg);
   asideLogo.appendChild(review);
@@ -21,33 +21,19 @@ export const register = () => {
   const footPart = document.createElement('footer');
   // footer
   footPart.classList.add('footer');
-  footPart.innerText = 'Todos los derechos reservados 2022. Propiedad de Cyntia, Norkis y Lidianys';
-  // const inputName = document.createElement('input');
-  // const inputSurname = document.createElement('input');
-  // const inputUser = document.createElement('input');
+  footPart.innerText = 'Todos los derechos reservados © 2022. Propiedad de Cyntia, Norkis y Lidianys';
+  // creacion de los inputs con sus atributos y clase que serán contenidos por un form
   const inputMail = document.createElement('input');
   const inputPassword = document.createElement('input');
   const inputPassword2 = document.createElement('input');
   const warnings = document.createElement('div');
-  // const inputNationality = document.createElement('input');
-  // const inputResident = document.createElement('input');
-  //
-  // inputName.classList.add('inputName');
-  // inputSurname.classList.add('inputSurname');
 
   inputMail.classList.add('inputMail');
   inputPassword.classList.add('inputPassword');
   inputPassword2.classList.add('inputPassword2');
   warnings.classList.add('warning');
   warnings.setAttribute('id', 'warning');
-  // warnings.innerText = 'hola mundo';
-  // inputAge.classList.add('inputAge');
-  // inputNationality.classList.add('inputNationality');
-  // inputResident.classList.add('inputResident');
-  //
-  // inputName.setAttribute('placeholder', 'Nombre');
-  // inputSurname.setAttribute('placeholder', 'Apellido');
-  // inputUser.setAttribute('placeholder', 'Usuario');
+
   inputMail.setAttribute('placeholder', 'Email');
   inputMail.setAttribute('name', 'email');
   inputPassword.setAttribute('placeholder', 'Crear contraseña de 8 dígitos');
@@ -60,47 +46,37 @@ export const register = () => {
   inputPassword2.setAttribute('placeholder', 'Repetir contraseña');
   inputPassword2.setAttribute('pattern', '.{8,}');
 
-  // ('title', 'Debe contener al menos un número y una letra mayúscula
-  // y minúscula, y al menos 8 o más caracteres';
-
   inputPassword2.setAttribute('pattern', '.{8,}');
   inputPassword2.setAttribute('title', 'La contraseña debe contener como minimo 8 digitos');
 
   inputPassword2.setAttribute('type', 'password');
   inputPassword2.setAttribute('name', 'password2');
-
-  // inputAge.setAttribute('placeholder', 'Edad');
-  // inputNationality.setAttribute('placeholder', 'Nacionalidad');
-  // inputResident.setAttribute('placeholder', 'Reside en Chile');
-  // Boton para volver a home
+  // creacion de button con atributo de href
   const buttonHome = document.createElement('button');
   buttonHome.innerText = 'Volver al inicio';
   buttonHome.classList.add('buttonHome');
   const a = document.createElement('a');
   a.setAttribute('href', '#/home');
-
+  // creacion del button para registrarse
   const submit = document.createElement('button');
   submit.innerHTML = 'Registrarse';
   submit.classList.add('registrarse');
-  // crear a de logearse
+  // creacion de anchor con atributo href
   const aHome = document.createElement('a');
   aHome.classList.add('aHome');
   aHome.setAttribute('href', '#/home');
   aHome.innerText = '¿Ya tienes cuenta? Inicia sesión.';
-
-  // creacion de boton
+  // creacion de button para google
   const buttonGoogle = document.createElement('button');
   buttonGoogle.innerText = 'Continuar con Google';
   buttonGoogle.classList.add('googleButton');
   buttonGoogle.addEventListener('click', () => {
-  // console.log('cualquier cosa');
     Iniciargoogle();
   });
-  // div del formulario
-  const divFormulario = document.createElement('form'); // ya no es un div sino un form
+  // creacion del form que contiene los inputs y buttons
+  const divFormulario = document.createElement('form');
   divFormulario.classList.add('divFormulario');
 
-  // div general
   const divContenedor = document.createElement('div');
   divContenedor.classList.add('signup');
   divFormulario.appendChild(warnings);
@@ -110,16 +86,12 @@ export const register = () => {
   divFormulario.appendChild(submit);
   divFormulario.appendChild(aHome);
   divFormulario.appendChild(buttonGoogle);
-  // divContenedor.appendChild(inputName);
-  // divContenedor.appendChild(inputSurname);
-  // divContenedor.appendChild(inputUser);
+
   divContenedor.appendChild(headerPart);
   divContenedor.appendChild(asideLogo);
   divContenedor.appendChild(divFormulario);
   divContenedor.appendChild(footPart);
-  // divContenedor.appendChild(inputAge);
-  // divContenedor.appendChild(inputNationality);
-  // divContenedor.appendChild(inputResident);
-  // divContenedor.appendChild(inputResident);
+  // esta funcion devuelve un componente div con todos los elementos creados.
+
   return divContenedor;
 };

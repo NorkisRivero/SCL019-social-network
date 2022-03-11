@@ -278,6 +278,7 @@ export const eventsRegister = () => {
     }
   });
 };
+// ---------------------------------- Login ------------------------------------
 export const logout = () => {
   signOut(auth)
     .then(() => {
