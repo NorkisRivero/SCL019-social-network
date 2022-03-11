@@ -1,6 +1,6 @@
 import { editDeletePost } from '../lib/index.js';
-// import { wall } from './wall.js';
-
+// Se mantiene el header del wall.
+// se cambió el nombre de las clases para el css
 export const editPost = () => {
   const edit = `
 
@@ -14,23 +14,24 @@ export const editPost = () => {
 <section id = "allPost1" class = "allPost1">
 </section>
 `;
+  // addEventListener para escuchar los botones de home y salir
   const divHeader = document.createElement('div');
   divHeader.classList.add('divHeader');
-  divHeader.innerHTML = edit;
+  divHeader.innerHTML = edit; // se establece la sintaxis del divHeader con la const edit
   const buttonHome = divHeader.querySelector('.home1');
   if (buttonHome) {
     buttonHome.addEventListener('click', () => {
-      window.location.hash = '#/wall';
+      window.location.hash = '#/wall'; // se cambia la ruta con el hash correspondiente
     });
   }
   const buttonLogout = divHeader.querySelector('.logout1');
   if (buttonLogout) {
     buttonLogout.addEventListener('click', (e) => {
       e.preventDefault();
-      window.location.hash = '#/logout';
+      window.location.hash = '#/logout'; // se cambia la ruta con el hash correspondiente
     });
   }
 
-  editDeletePost();
+  editDeletePost(); // se llama a la funcion editDeletePost
   return divHeader;
 };
