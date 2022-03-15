@@ -181,7 +181,7 @@ section{
     z-index: 1;
     right: 13%;
   }
-  .logout:hover .tooltiptext3 {
+.logout:hover .tooltiptext3 {
     visibility: visible;
     cursor: pointer;
-  }
+}
